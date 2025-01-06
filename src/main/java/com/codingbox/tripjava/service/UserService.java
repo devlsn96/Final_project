@@ -117,7 +117,7 @@ public class UserService {
 		return false; // 중복 있음
     }
 
-	// 소셯로그인 진행시, 신규 유저인지 확인
+	// 소셜로그인 진행시, 신규 유저인지 확인
 	public boolean isNewUser(Integer userId) {
 		System.out.println("userId : " + userId);
 		User user = userRepository.findById(userId);
