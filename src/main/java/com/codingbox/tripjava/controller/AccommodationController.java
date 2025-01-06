@@ -27,12 +27,6 @@ public class AccommodationController {
     private final ReviewService reviewService;
     private final AccommodationRepository accommodationRepository;
 
-    // @Autowired
-    // public AccommodationController(ReviewService reviewService, AccommodationRepository accommodationRepository, WishlistService wishlistService) {
-    //     this.reviewService = reviewService;
-    //     this.accommodationRepository = accommodationRepository;
-    // }
-
     // 숙소 정보, 리뷰, 위시리스트 상태 조회
     @GetMapping("/{accomId}")
     public AccommodationWithReviewsDTO getAccommodationWithReviews(@PathVariable Integer accomId, @RequestParam(required = false) Integer userId) {

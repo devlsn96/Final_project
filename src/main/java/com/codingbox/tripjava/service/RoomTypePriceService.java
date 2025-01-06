@@ -19,15 +19,7 @@ public class RoomTypePriceService {
 
     private final RoomTypePriceRepository roomTypePriceRepository;
     private final AccommodationRepository accommodationRepository;
-
-    // 생성자 주입: RoomTypePriceRepository와 AccommodationRepository를 받음
-    // @Autowired
-    // public RoomTypePriceService(RoomTypePriceRepository roomTypePriceRepository, 
-    //                             AccommodationRepository accommodationRepository) {
-    //     this.roomTypePriceRepository = roomTypePriceRepository;
-    //     this.accommodationRepository = accommodationRepository;
-    // }
-
+    
     // accomId로 RoomTypePrice 조회
     public List<RoomTypePriceDTO2> getRoomTypePricesByAccommodation(Integer accomId) {
         // accomId로 Accommodation 객체 조회

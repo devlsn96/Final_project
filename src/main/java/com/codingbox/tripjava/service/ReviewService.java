@@ -23,17 +23,6 @@ public class ReviewService {
     private final ReservationRepository reservationRepository;
     private final AccommodationRepository accommodationRepository;
 
-    // @Autowired
-    // public ReviewService(ReviewRepository reviewRepository,
-    //                      UserRepository1 userRepository1,
-    //                      ReservationRepository reservationRepository,
-    //                      AccommodationRepository accommodationRepository) {
-    //     this.reviewRepository = reviewRepository;
-    //     this.userRepository1 = userRepository1;
-    //     this.reservationRepository = reservationRepository;
-    //     this.accommodationRepository = accommodationRepository;
-    // }
-
     // 리뷰 추가
     public Review addReview(Review review) {
         // 유저 ID 검증 및 설정

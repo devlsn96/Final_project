@@ -29,13 +29,6 @@ public class ReviewController {
     private final AccommodationRepository accommodationRepository;
     private final ReservationRepository reservationRepository;
 
-    // @Autowired
-    // public ReviewController(ReviewService reviewService, AccommodationRepository accommodationRepository, ReservationRepository reservationRepository) {
-    //     this.reviewService = reviewService;
-    //     this.accommodationRepository = accommodationRepository;
-    //     this.reservationRepository = reservationRepository;
-    // }
-
     // 리뷰 전체 목록 조회
     @GetMapping
     public List<ReviewDTO> getAllReviews() {

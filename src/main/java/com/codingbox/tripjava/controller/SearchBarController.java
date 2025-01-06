@@ -21,10 +21,6 @@ public class SearchBarController {
 
     private final AccommodationService1 accommodationService;
 
-    // public SearchBarController(AccommodationService1 accommodationService) {
-    //     this.accommodationService = accommodationService;
-    // }
-
     @GetMapping("/all")
     public List<Accommodation> searchAccommodations(
             @RequestParam(value = "accomname", required = false) String accomName,
