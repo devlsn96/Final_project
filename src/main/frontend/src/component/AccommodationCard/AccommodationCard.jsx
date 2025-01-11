@@ -7,18 +7,13 @@ function AccommodationCard({ data }) {
   const { id, name, type, address, rating, price, imageUrl } = data;
   const navigate = useNavigate();
 
-
   const handleAccommodationDetail = () => {
     navigate(`/accommodation/${id}`);
-  }
+  };
 
   return (
     <div className="accommodation-card" onClick={handleAccommodationDetail}>
-      <img 
-        src={imageUrl} 
-        alt={`${name}`} 
-        className="accommodation-image" 
-      />
+      <img src={imageUrl} alt={`${name}`} className="accommodation-image" />
 
       <div className="accommodation-details">
         <h3>{name}</h3>
