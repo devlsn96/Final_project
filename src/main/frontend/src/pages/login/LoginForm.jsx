@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import Input from "../../component/Input";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
-import "./loginform.css"
+import "./loginform.css";
 
-export default function LoginForm({ checkLoginStatus  }) {
+export default function LoginForm({ checkLoginStatus }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMsg, setErrorMsg] = useState("");
@@ -70,7 +70,9 @@ export default function LoginForm({ checkLoginStatus  }) {
         alert("로그인 실패!");
         if (error.response && error.response.data) {
           setErrorMsg(error.response.data.msg); // 서버에서 반환된 오류 메시지 표시
-          console.log("서버에서 반환된 오류 메시지 : " + error.response.data.msg);
+          console.log(
+            "서버에서 반환된 오류 메시지 : " + error.response.data.msg
+          );
         } else {
           setErrorMsg("로그인 중 오류가 발생했습니다. 다시 시도해주세요.");
           console.log("리액트 오류 메시지 : " + error.message);
@@ -80,53 +82,53 @@ export default function LoginForm({ checkLoginStatus  }) {
 
   return (
     <div className="login-wrap">
-    <div className="login">
-      <h1>이메일로 시작하기</h1>
-      <br/>
-      <form onSubmit={handleSubmit} className="login-form">
-        <Input
-          label="이메일"
-          type="email"
-          placeholder="abc@tripjava.co.kr"
-          name="email"
-          id="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          onBlur={() => handleBlur("email")}
-        />
-        <span className="valid_text">{formErrors.email}</span>
+      <div className="login">
+        <h1>이메일로 시작하기</h1>
         <br />
-        <Input
-          label="비밀번호"
-          type="password"
-          placeholder="비밀번호를 입력하세요."
-          name="password"
-          id="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          onBlur={() => handleBlur("password")}
-        />
-        <span className="valid_text">{formErrors.password}</span>
+        <form onSubmit={handleSubmit} className="login-form">
+          <Input
+            label="이메일"
+            type="email"
+            placeholder="abc@tripjava.co.kr"
+            name="email"
+            id="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            onBlur={() => handleBlur("email")}
+          />
+          <span className="valid_text">{formErrors.email}</span>
+          <br />
+          <Input
+            label="비밀번호"
+            type="password"
+            placeholder="비밀번호를 입력하세요."
+            name="password"
+            id="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            onBlur={() => handleBlur("password")}
+          />
+          <span className="valid_text">{formErrors.password}</span>
+          <br />
+          <button
+            type="submit"
+            disabled={isButtonDisabled}
+            style={{
+              backgroundColor: isButtonDisabled ? "#ccc" : "#4169e1",
+              cursor: isButtonDisabled ? "not-allowed" : "pointer",
+            }}
+          >
+            로그인
+          </button>
+        </form>
         <br />
-        <button
-          type="submit"
-          disabled={isButtonDisabled}
-          style={{
-            backgroundColor: isButtonDisabled ? "#ccc" : "#4169e1",
-            cursor: isButtonDisabled ? "not-allowed" : "pointer",
-          }}
-        >
-          로그인
-        </button>
-      </form>
-      <br/>
-      <div className="regitpage">
-        <div className="caption">계정이 없으신가요?</div>
-        <Link to="/login/email/regit">
-          <div className="text-button">이메일로 회원가입</div>
-        </Link>
+        <div className="regitpage">
+          <div className="caption">계정이 없으신가요?</div>
+          <Link to="/login/email/regit">
+            <div className="text-button">이메일로 회원가입</div>
+          </Link>
+        </div>
       </div>
-    </div>
     </div>
   );
 }

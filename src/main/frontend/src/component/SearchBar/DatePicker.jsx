@@ -38,7 +38,9 @@ function DatePicker({ value, onChange }) {
         onChange={handleSelect}
         locale={ko} // 한국 시간대 설정
         editableDateInputs={true} /* 날짜 직접 입력 허용 */
-        moveRangeOnFirstSelection={false} /* 첫 클릭 시 달력이 닫히지 않도록 설정 */
+        moveRangeOnFirstSelection={
+          false
+        } /* 첫 클릭 시 달력이 닫히지 않도록 설정 */
         retainEndDateOnFirstSelection={true} /* 체크인 선택 후 체크아웃 유지 */
         minDate={new Date()} /* 오늘 날짜 이후만 선택 가능 */
       />

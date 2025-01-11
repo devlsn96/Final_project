@@ -88,66 +88,77 @@ function ReviewList({ accomId }) {
           <option value="highestRating">별점 높은순</option>
         </select>
       </div>
-      <br/><br/>
+      <br />
+      <br />
       <div className="review-list">
-      {/* 리뷰 목록 표시 */}
-      <ul>
-        {sortedReviews().map((review) => (
-          <li key={review.reviewId} style={{ marginBottom: "20px" }}>
-            <div style={{ display: "flex", justifyContent: "space-between" }}>
-              <div className="review-margin">
-              <div>
-                <p>🙎‍♀️ <strong>{review.username}</strong>&nbsp;&nbsp;
-                평점 : {review.rating.toFixed(1)}<br/>작성 날짜 : {new Date(review.reviewDate).toLocaleDateString()}</p> {/* 작성자 이름 출력 */}
-                <br/>
-
-                {/* 리뷰에 이미지가 있을 경우 */}
-                {review.reviewImagePath && review.reviewImagePath.trim() !== "" && (
+        {/* 리뷰 목록 표시 */}
+        <ul>
+          {sortedReviews().map((review) => (
+            <li key={review.reviewId} style={{ marginBottom: "20px" }}>
+              <div style={{ display: "flex", justifyContent: "space-between" }}>
+                <div className="review-margin">
                   <div>
-                    {review.reviewImagePath.split(",").map((imgUrl, index) => (
-                      <img
-                        className="review-img"
-                        key={index}
-                        src={imgUrl}
-                        alt={`Review Image ${index + 1}`}
-                      />
-                    ))}
+                    <p>
+                      🙎‍♀️ <strong>{review.username}</strong>&nbsp;&nbsp; 평점 :{" "}
+                      {review.rating.toFixed(1)}
+                      <br />
+                      작성 날짜 :{" "}
+                      {new Date(review.reviewDate).toLocaleDateString()}
+                    </p>{" "}
+                    {/* 작성자 이름 출력 */}
+                    <br />
+                    {/* 리뷰에 이미지가 있을 경우 */}
+                    {review.reviewImagePath &&
+                      review.reviewImagePath.trim() !== "" && (
+                        <div>
+                          {review.reviewImagePath
+                            .split(",")
+                            .map((imgUrl, index) => (
+                              <img
+                                className="review-img"
+                                key={index}
+                                src={imgUrl}
+                                alt={`Review Image ${index + 1}`}
+                              />
+                            ))}
+                        </div>
+                      )}
+                    <br />
+                    <p className="review-text">{review.reviewText}</p>
                   </div>
-                )}
-                <br/>
-                <p className="review-text">{review.reviewText}</p>
-              </div>
-              
-            
-            <br/>
-            <div className="review-button">
-              <button
-                style={{ marginRight: "10px" }}
-                onClick={() => handleEdit(review)}
-              >
-                수정
-              </button>
-              <button onClick={() => handleDelete(review.reviewId)}>삭제</button>
-            </div>
-            </div>
-            </div>
-            <br/><br/>
 
-            {/* 수정 폼은 해당 리뷰 아래에 나타나도록 */}
-            {editingReview && editingReview.reviewId === review.reviewId && (
-              <div style={{ marginTop: "20px" }}>
-                <ReviewForm
-                  accommodationId={accomId}
-                  fetchReviews={() => fetchReviews(accomId)}
-                  editingReview={editingReview}
-                  setEditingReview={setEditingReview}
-                />
+                  <br />
+                  <div className="review-button">
+                    <button
+                      style={{ marginRight: "10px" }}
+                      onClick={() => handleEdit(review)}
+                    >
+                      수정
+                    </button>
+                    <button onClick={() => handleDelete(review.reviewId)}>
+                      삭제
+                    </button>
+                  </div>
+                </div>
               </div>
-            )}
-          </li>
-        ))}
-      </ul>
-    </div>
+              <br />
+              <br />
+
+              {/* 수정 폼은 해당 리뷰 아래에 나타나도록 */}
+              {editingReview && editingReview.reviewId === review.reviewId && (
+                <div style={{ marginTop: "20px" }}>
+                  <ReviewForm
+                    accommodationId={accomId}
+                    fetchReviews={() => fetchReviews(accomId)}
+                    editingReview={editingReview}
+                    setEditingReview={setEditingReview}
+                  />
+                </div>
+              )}
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 }

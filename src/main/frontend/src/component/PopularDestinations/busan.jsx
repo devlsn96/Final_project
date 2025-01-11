@@ -52,7 +52,10 @@ function AccommodationList() {
       );
 
       const data = response.data
-        .filter(item => item.accomName.includes("부산") || item.address.includes("부산"))
+        .filter(
+          (item) =>
+            item.accomName.includes("부산") || item.address.includes("부산")
+        )
         .map((item) => ({
           id: item.accomId,
           name: item.accomName,
@@ -100,7 +103,15 @@ function AccommodationList() {
 
   useEffect(() => {
     handleSearch({ accomName, accomAddress, checkIn, checkOut, guests });
-  }, [accomName, accomAddress, checkIn, checkOut, guests, filterType, priceRange]);
+  }, [
+    accomName,
+    accomAddress,
+    checkIn,
+    checkOut,
+    guests,
+    filterType,
+    priceRange,
+  ]);
 
   if (isLoading) return <p>로딩 중...</p>;
   if (error) return <p>{error}</p>;
@@ -110,18 +121,21 @@ function AccommodationList() {
       <div className="filter-container">
         <h3>숙소 유형</h3>
         <div className="filter-options">
-          {["전체", "모텔", "호텔", "리조트", "펜션", "게스트하우스"].map((type) => (
-            <label key={type}>
-              <input
-                type="radio"
-                name="filterType"
-                value={type}
-                checked={filterType === type}
-                onChange={() => handleTypeFilterChange(type)}
-              />
-              {type}<br/>
-            </label>
-          ))}
+          {["전체", "모텔", "호텔", "리조트", "펜션", "게스트하우스"].map(
+            (type) => (
+              <label key={type}>
+                <input
+                  type="radio"
+                  name="filterType"
+                  value={type}
+                  checked={filterType === type}
+                  onChange={() => handleTypeFilterChange(type)}
+                />
+                {type}
+                <br />
+              </label>
+            )
+          )}
         </div>
         <h3>가격 (1박 기준)</h3>
         <Slider
@@ -133,7 +147,8 @@ function AccommodationList() {
           onChange={handlePriceRangeChange}
         />
         <p>
-          {priceRange[0].toLocaleString()}원 ~ {priceRange[1].toLocaleString()}원
+          {priceRange[0].toLocaleString()}원 ~ {priceRange[1].toLocaleString()}
+          원
         </p>
       </div>
 

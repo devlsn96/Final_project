@@ -55,7 +55,7 @@ function AccommodationList() {
         imageUrl: item.representativeImage
           ? item.representativeImage.split(",")[0]
           : null,
-        rating: item.averageRating 
+        rating: item.averageRating
           ? parseFloat(item.averageRating).toFixed(1)
           : "평점 없음",
       }));
@@ -76,7 +76,15 @@ function AccommodationList() {
 
   useEffect(() => {
     handleSearch({ accomName, accomAddress, checkIn, checkOut, guests });
-  }, [accomName, accomAddress, checkIn, checkOut, guests, filterType, priceRange]);
+  }, [
+    accomName,
+    accomAddress,
+    checkIn,
+    checkOut,
+    guests,
+    filterType,
+    priceRange,
+  ]);
 
   const handleSortChange = (option) => {
     setSortOption(option);
@@ -106,69 +114,73 @@ function AccommodationList() {
 
   return (
     <body>
-    <div className="accommodation-list-container">
-      <div className="filter-container">
-        <h3>숙소 유형</h3>
-        <div className="filter-options">
-          {["전체", "모텔", "호텔", "리조트", "펜션", "게스트하우스"].map((type) => (
-            <label key={type}>
-              <input
-                type="radio"
-                name="filterType"
-                value={type}
-                checked={filterType === type}
-                onChange={() => handleTypeFilterChange(type)}
-              />
-              {type}<br/>
-            </label>
-          ))}
-        </div>
-        <h3>가격 (1박 기준)</h3>
-        <Slider
-          range
-          min={0}
-          max={200000}
-          step={30000}
-          value={priceRange}
-          onChange={handlePriceRangeChange}
-        />
-        <p>
-          {priceRange[0].toLocaleString()}원 ~ {priceRange[1].toLocaleString()}원
-        </p>
-      </div>
-
-      <div className="main-content">
-        {isExpanded && (
-          <div className="expanded-search-bar">
-            <SearchBar
-              onSearch={handleSearch}
-              onClose={() => setIsExpanded(false)}
-            />
+      <div className="accommodation-list-container">
+        <div className="filter-container">
+          <h3>숙소 유형</h3>
+          <div className="filter-options">
+            {["전체", "모텔", "호텔", "리조트", "펜션", "게스트하우스"].map(
+              (type) => (
+                <label key={type}>
+                  <input
+                    type="radio"
+                    name="filterType"
+                    value={type}
+                    checked={filterType === type}
+                    onChange={() => handleTypeFilterChange(type)}
+                  />
+                  {type}
+                  <br />
+                </label>
+              )
+            )}
           </div>
-        )}
-        <br/>
-        <div className="sort-filter">
-          <label htmlFor="sort">정렬 : </label>
-          <select
-            id="sort"
-            value={sortOption}
-            onChange={(e) => handleSortChange(e.target.value)}
-          >
-            <option value="추천순">추천순</option>
-            <option value="평점높은순">평점 높은 순</option>
-            <option value="낮은가격순">낮은 가격 순</option>
-            <option value="높은가격순">높은 가격 순</option>
-          </select>
+          <h3>가격 (1박 기준)</h3>
+          <Slider
+            range
+            min={0}
+            max={200000}
+            step={30000}
+            value={priceRange}
+            onChange={handlePriceRangeChange}
+          />
+          <p>
+            {priceRange[0].toLocaleString()}원 ~{" "}
+            {priceRange[1].toLocaleString()}원
+          </p>
         </div>
-        <br/>
-        <br/>
-        <div className="accommodation-grid">
-          {accommodations.map((item) => (
-            <AccommodationCard key={item.id} data={item} />
-          ))}
+
+        <div className="main-content">
+          {isExpanded && (
+            <div className="expanded-search-bar">
+              <SearchBar
+                onSearch={handleSearch}
+                onClose={() => setIsExpanded(false)}
+              />
+            </div>
+          )}
+          <br />
+          <div className="sort-filter">
+            <label htmlFor="sort">정렬 : </label>
+            <select
+              id="sort"
+              value={sortOption}
+              onChange={(e) => handleSortChange(e.target.value)}
+            >
+              <option value="추천순">추천순</option>
+              <option value="평점높은순">평점 높은 순</option>
+              <option value="낮은가격순">낮은 가격 순</option>
+              <option value="높은가격순">높은 가격 순</option>
+            </select>
+          </div>
+          <br />
+          <br />
+          <div className="accommodation-grid">
+            {accommodations.map((item) => (
+              <AccommodationCard key={item.id} data={item} />
+            ))}
+          </div>
         </div>
       </div>
-    </div>
     </body>
   );
 }

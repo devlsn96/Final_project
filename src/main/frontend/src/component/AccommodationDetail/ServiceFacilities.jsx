@@ -23,7 +23,7 @@ export default function ServiceFacilities({ amenities }) {
     LAUNDRY: images.laundry,
     ELEVATOR: images.elevator,
     PETFRIENDLY: images.petfriendly,
-    BREAKFAST: images.restaurant, 
+    BREAKFAST: images.restaurant,
     NOSMOKING: images.nosmoking,
     OCEANVIEW: images.pool,
     CITYVIEW: images.tv,
@@ -34,14 +34,14 @@ export default function ServiceFacilities({ amenities }) {
 
   return (
     <div className="service">
-      <br/>
+      <br />
       <h2 id="service">편의 시설</h2>
       <div className="service-list">
         {amenities.map((amenity, index) => {
           const icon = amenityIcons[amenity] || defaultIcon;
           return (
             <div key={index} className="service-item">
-              <img src={icon} alt={amenity}/>
+              <img src={icon} alt={amenity} />
               {amenity}
             </div>
           );

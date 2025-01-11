@@ -71,7 +71,10 @@ const Wishlist = React.memo(({ user }) => {
                   onMouseLeave={() => setHoveredItemId(null)}
                 >
                   <img
-                    src={item.imageUrl?.split(",")[0]?.trim() || "/default-image.png"}
+                    src={
+                      item.imageUrl?.split(",")[0]?.trim() ||
+                      "/default-image.png"
+                    }
                     alt={item.accomName || "No Name"}
                   />
                   <h3>{item.accomName}</h3>

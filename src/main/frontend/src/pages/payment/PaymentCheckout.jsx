@@ -151,7 +151,7 @@ export default function PaymentCheckoutPage() {
               </div>
             </div>
             <div className={styles.section_payment}>
-            <div className={styles.divider}></div>
+              <div className={styles.divider}></div>
               <div className={styles.title} id="payment-title">
                 결제 수단
               </div>
@@ -190,7 +190,7 @@ export default function PaymentCheckoutPage() {
                           {getDateWithWeekday(
                             sessionStorage.getItem("checkOut")
                           )}{" "}
-                           ({numberOfNights}박)
+                          ({numberOfNights}박)
                         </td>
                       </tr>
                       <tr className="accom_max_person">

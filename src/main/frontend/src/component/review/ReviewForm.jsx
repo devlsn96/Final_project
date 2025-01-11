@@ -2,7 +2,12 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./ReviewList.css";
 
-function ReviewForm({ accommodationId, editingReview, setEditingReview, fetchReviews }) {
+function ReviewForm({
+  accommodationId,
+  editingReview,
+  setEditingReview,
+  fetchReviews,
+}) {
   const [reviewText, setReviewText] = useState(""); // 리뷰 내용
   const [rating, setRating] = useState(5); // 평점
   const [reviewDate, setReviewDate] = useState(""); // 작성 날짜
@@ -17,13 +22,20 @@ function ReviewForm({ accommodationId, editingReview, setEditingReview, fetchRev
       setRating(editingReview.rating);
       setReviewDate(editingReview.reviewDate);
       // reviewImagePath가 "default-image.png"일 경우 null로 처리
-      setReviewImagePath(editingReview.reviewImagePath === "default-image.png" ? null : editingReview.reviewImagePath);
+      setReviewImagePath(
+        editingReview.reviewImagePath === "default-image.png"
+          ? null
+          : editingReview.reviewImagePath
+      );
     }
 
     // 로그인된 사용자 정보 가져오기
     const fetchUser = async () => {
       try {
-        const response = await axios.get("http://localhost:9090/api/session/user",{ withCredentials: true });
+        const response = await axios.get(
+          "http://localhost:9090/api/session/user",
+          { withCredentials: true }
+        );
         if (response.data) {
           setUserId(response.data.userId); // 사용자 ID 설정
         } else {
@@ -51,16 +63,17 @@ function ReviewForm({ accommodationId, editingReview, setEditingReview, fetchRev
     console.log("reviewImagePath:", reviewImagePath); // reviewImagePath 값 출력
 
     // reviewImagePath가 null이거나 "default-image.png"일 경우 null로 처리
-    const finalImagePath = (reviewImagePath && reviewImagePath !== "default-image.png")
-      ? reviewImagePath
-      : null;
+    const finalImagePath =
+      reviewImagePath && reviewImagePath !== "default-image.png"
+        ? reviewImagePath
+        : null;
 
     const requestData = {
       reviewText: reviewText,
       rating: rating,
       accommodationId: accommodationId,
       userId: userId, // 세션에서 가져온 유저 ID 사용
-      reviewImagePath: finalImagePath // reviewImagePath가 없으면 null
+      reviewImagePath: finalImagePath, // reviewImagePath가 없으면 null
     };
 
     // 디버깅: requestData 값 확인
@@ -71,15 +84,13 @@ function ReviewForm({ accommodationId, editingReview, setEditingReview, fetchRev
         await axios.put(
           `http://localhost:9090/api/reviews/${editingReview.reviewId}`,
           requestData,
-          { withCredentials: true } 
+          { withCredentials: true }
         );
         alert("리뷰가 수정되었습니다.");
       } else {
-        await axios.post(
-          "http://localhost:9090/api/reviews",
-          requestData,
-          { withCredentials: true } 
-        );
+        await axios.post("http://localhost:9090/api/reviews", requestData, {
+          withCredentials: true,
+        });
         alert("리뷰가 작성되었습니다.");
       }
 
@@ -101,9 +112,10 @@ function ReviewForm({ accommodationId, editingReview, setEditingReview, fetchRev
     <div className="review-form">
       <h2>{editingReview ? "리뷰 수정" : "리뷰 작성"}</h2>
       <form onSubmit={handleSubmit}>
-        <div className="review-write"> 
-          <label>리뷰 내용 : </label><br/>
-          <textarea 
+        <div className="review-write">
+          <label>리뷰 내용 : </label>
+          <br />
+          <textarea
             value={reviewText}
             onChange={(e) => setReviewText(e.target.value)}
             required
@@ -111,7 +123,10 @@ function ReviewForm({ accommodationId, editingReview, setEditingReview, fetchRev
         </div>
         <div className="review-rating">
           <label>평점 : </label>
-          <select value={rating.toFixed(1)} onChange={(e) => setRating(parseFloat(e.target.value))}>
+          <select
+            value={rating.toFixed(1)}
+            onChange={(e) => setRating(parseFloat(e.target.value))}
+          >
             {[...Array(11)].map((_, index) => {
               const value = (index / 2).toFixed(1);
               return (
@@ -129,7 +144,7 @@ function ReviewForm({ accommodationId, editingReview, setEditingReview, fetchRev
           </div>
         )}
         <div className="write-btn">
-        <button type="submit">{editingReview ? "수정" : "작성"}</button>
+          <button type="submit">{editingReview ? "수정" : "작성"}</button>
         </div>
       </form>
     </div>

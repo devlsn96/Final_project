@@ -1,4 +1,4 @@
-import './LocationInput.css';
+import "./LocationInput.css";
 
 function LocationInput({ value, onChange }) {
   return (

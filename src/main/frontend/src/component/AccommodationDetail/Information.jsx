@@ -37,13 +37,15 @@ export default function Information({ accommodation, userId }) {
       }
     };
 
-    if (accomId && userId) { // userId로 조건 확인
+    if (accomId && userId) {
+      // userId로 조건 확인
       checkFavoriteStatus();
     }
   }, [accomId, userId]); // userId로 의존성 설정
 
   const handleFavoriteClick = async () => {
-    if (!userId) { // userId 확인
+    if (!userId) {
+      // userId 확인
       alert("로그인이 필요합니다.");
       navigate("/login");
       return;
@@ -72,9 +74,9 @@ export default function Information({ accommodation, userId }) {
     <div className="information">
       <h1 className="accomname">{accomName}</h1>
       <div className="favorite-section">
-          <button className="favorite-button" onClick={handleFavoriteClick}>
-            {isFavorited ? "❤️" : "🤍"}
-          </button>
+        <button className="favorite-button" onClick={handleFavoriteClick}>
+          {isFavorited ? "❤️" : "🤍"}
+        </button>
       </div>
       <div className="detail-container">
         <br />

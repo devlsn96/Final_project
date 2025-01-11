@@ -34,7 +34,7 @@ export default function LoginPage() {
             카카오로 시작하기
           </button>
           <button onClick={handleLogin}>
-            <img src={emailImg} className="email-btn"/>
+            <img src={emailImg} className="email-btn" />
             이메일로 시작하기
           </button>
         </div>

@@ -102,10 +102,7 @@ const ReservationHistory = React.memo(({ user }) => {
           {bookedReservations.length > 0 ? (
             <ul className={styles.list}>
               {bookedReservations.map((reservationData) => (
-                <li
-                  key={reservationData.resvId}
-                  className={styles.listItem}
-                >
+                <li key={reservationData.resvId} className={styles.listItem}>
                   <div className={styles.itemHeader}>
                     <span className={styles.dateInfo}>
                       {formatDate(reservationData.checkInDate)} ~{" "}
@@ -135,8 +132,8 @@ const ReservationHistory = React.memo(({ user }) => {
                       {reservationData.numberGuests}인
                     </div>
                     <div className={styles.priceInfo}>
-                      전체 숙박 가격: {Number(reservationData.amount).toLocaleString()}원
-                      
+                      전체 숙박 가격:{" "}
+                      {Number(reservationData.amount).toLocaleString()}원
                     </div>
                   </div>
                 </li>

@@ -1,6 +1,7 @@
 @font-face {
-  font-family: 'GmarketSansMedium';
-  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+  font-family: "GmarketSansMedium";
+  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff")
+    format("woff");
   font-weight: normal;
   font-style: normal;
 }
@@ -43,7 +44,10 @@
 
 .accommodation-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* 반응형 그리드 */
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(300px, 1fr)
+  ); /* 반응형 그리드 */
   gap: 50px; /* 카드 간 간격 */
 }
 
@@ -157,7 +161,7 @@
 }
 
 #sort {
-  font-family: 'GmarketSansMedium';
+  font-family: "GmarketSansMedium";
   border: none;
   border: 1px solid #ccc;
   border-radius: 5px;
@@ -166,4 +170,3 @@
   font-size: 15px;
   margin: 0 auto;
 }
-

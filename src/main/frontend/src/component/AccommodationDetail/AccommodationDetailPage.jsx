@@ -63,7 +63,7 @@ function AccommodationDetailPage({ userId }) {
   return (
     <div className="accommodation-detail-page">
       <Menu className="menu" />
-      
+
       <ImageGallery imageUrls={imageUrls} />
 
       <div className="info-wrap">

@@ -1,14 +1,15 @@
 import "./ReviewList.css";
 
 function ReviewHeader({ rating, reviewCount }) {
-    return (
-      <div className="review-header">
-        <h2 id="review">리뷰</h2>
-        {/* 평균 평점은 왼쪽 정렬 */}
-        <div className="average-rating-container">
-          <div className="css-yeouz0">
-            <h2 className="css-4wprqg">평균 평점&nbsp;
-              <svg
+  return (
+    <div className="review-header">
+      <h2 id="review">리뷰</h2>
+      {/* 평균 평점은 왼쪽 정렬 */}
+      <div className="average-rating-container">
+        <div className="css-yeouz0">
+          <h2 className="css-4wprqg">
+            평균 평점&nbsp;
+            <svg
               width="30"
               height="30"
               viewBox="0 0 20 20"
@@ -21,16 +22,16 @@ function ReviewHeader({ rating, reviewCount }) {
                 fill="current"
               ></path>
             </svg>
-            {rating}</h2>
-          </div>
-          <span className="css-1m0qn1y">
-            {reviewCount}명 평가 ・ {reviewCount}개 리뷰
-          </span>
+            {rating}
+          </h2>
         </div>
-        <br/>
+        <span className="css-1m0qn1y">
+          {reviewCount}명 평가 ・ {reviewCount}개 리뷰
+        </span>
       </div>
-    );
-  }
-  
-  export default ReviewHeader;
-  
+      <br />
+    </div>
+  );
+}
+
+export default ReviewHeader;

@@ -48,8 +48,8 @@ function RegitPhone({ user }) {
       }
 
       await axios.post(
-        `/api/${user.userId}/register-phone`, // 요청 경로
-        { phone }, // 요청 body
+        `/api/${user.userId}/register-phone`,
+        { phone },
         { withCredentials: true }
       );
       alert("회원가입이 완료되었습니다!");
@@ -58,41 +58,44 @@ function RegitPhone({ user }) {
       console.error("전화번호 등록 실패:", err);
       setError("전화번호 등록에 실패했습니다. 다시 시도해주세요.");
     }
-    
   };
 
   return (
     <div className={style.phoneWrap}>
-    <div className={style.container}>
-      <h1 className={style.header}>휴대폰 입력</h1>
-      <p className={style.headerP}>원활한 서비스 제공을 위해 전화번호를 입력해 주세요</p>
-      <form className={style.phoneForm} onSubmit={handleSubmit}>
-        <Input className={style.phoneInput}
-          label="휴대폰 번호"
-          type="text"
-          name="phone"
-          id="phone"
-          value={phone}
-          placeholder="숫자만 입력 (10~11자리)"
-          onChange={(e) => setPhone(e.target.value)}
-          onBlur={handleBlur}
-          required
-        />
-        <span className={style.valid_text}>{error}</span>
-        <div className={style.regit}>
-          <button className={style.phoneButton}
-            type="submit"
-            disabled={isButtonDisabled}
-            style={{
-              backgroundColor: isButtonDisabled ? "#ccc" : "#4169e1",
-              cursor: isButtonDisabled ? "not-allowed" : "pointer",
-            }}
-          >
-            회원 가입 완료
-          </button>
-        </div>
-      </form>
-    </div>
+      <div className={style.container}>
+        <h1 className={style.header}>휴대폰 입력</h1>
+        <p className={style.headerP}>
+          원활한 서비스 제공을 위해 전화번호를 입력해 주세요
+        </p>
+        <form className={style.phoneForm} onSubmit={handleSubmit}>
+          <Input
+            className={style.phoneInput}
+            label="휴대폰 번호"
+            type="text"
+            name="phone"
+            id="phone"
+            value={phone}
+            placeholder="숫자만 입력 (10~11자리)"
+            onChange={(e) => setPhone(e.target.value)}
+            onBlur={handleBlur}
+            required
+          />
+          <span className={style.valid_text}>{error}</span>
+          <div className={style.regit}>
+            <button
+              className={style.phoneButton}
+              type="submit"
+              disabled={isButtonDisabled}
+              style={{
+                backgroundColor: isButtonDisabled ? "#ccc" : "#4169e1",
+                cursor: isButtonDisabled ? "not-allowed" : "pointer",
+              }}
+            >
+              회원 가입 완료
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
   );
 }

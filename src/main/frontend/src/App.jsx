@@ -1,5 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { createBrowserRouter, RouterProvider, Navigate } from "react-router-dom";
+import {
+  createBrowserRouter,
+  RouterProvider,
+  Navigate,
+} from "react-router-dom";
 import axios from "axios";
 
 // 페이지 컴포넌트
@@ -19,8 +23,8 @@ import PaymentSuccessPage from "./pages/payment/PaymentSuccess.jsx";
 import PaymentFailPage from "./pages/payment/PaymentFail.jsx";
 import AccommodationList from "./component/AccommodationList/AccommodationList.jsx";
 import MainPage from "./component/main/Main.jsx";
-import Jeju from './component/PopularDestinations/jeju.jsx';
-import Busan from './component/PopularDestinations/busan.jsx';
+import Jeju from "./component/PopularDestinations/jeju.jsx";
+import Busan from "./component/PopularDestinations/busan.jsx";
 
 function App() {
   const [user, setUser] = useState(null); // 사용자 정보
@@ -44,7 +48,10 @@ function App() {
         }
       })
       .catch((error) => {
-        console.error("세션 확인 실패:", error?.response?.data?.message || error.message);
+        console.error(
+          "세션 확인 실패:",
+          error?.response?.data?.message || error.message
+        );
         setUser(null);
         setToken(null);
       })
@@ -82,7 +89,7 @@ function App() {
           element: <LoginForm checkLoginStatus={checkLoginStatus} />,
         },
         { path: "/login/email/regit", element: <RegitForm /> },
-        { path: "/login/regitPhone", element: <RegitPhone user={user}/> },
+        { path: "/login/regitPhone", element: <RegitPhone user={user} /> },
         {
           path: "/mypage",
           element: <MyPage />,
@@ -111,17 +118,19 @@ function App() {
         },
         {
           path: "/accommodations/search",
-          element: <AccommodationList />
+          element: <AccommodationList />,
         },
         {
           path: "/accommodation/:accomId",
           element: <AccommodationDetailPage userId={user?.id} />,
         },
         {
-          path: "/destination/jeju", element: <Jeju />,
+          path: "/destination/jeju",
+          element: <Jeju />,
         },
         {
-          path: "/destination/busan", element: <Busan />,
+          path: "/destination/busan",
+          element: <Busan />,
         },
         {
           path: "/payment/checkout",

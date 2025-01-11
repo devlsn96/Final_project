@@ -161,7 +161,15 @@ export default function RegitForm() {
             }}
           />
           <span className="valid_text">{formErrors.email}</span>
-          {emailCheckMsg && <span className={`check_msg ${emailCheckMsg.includes("이미") ? "error" : ""}`}>{emailCheckMsg}</span>}
+          {emailCheckMsg && (
+            <span
+              className={`check_msg ${
+                emailCheckMsg.includes("이미") ? "error" : ""
+              }`}
+            >
+              {emailCheckMsg}
+            </span>
+          )}
           <br />
           <Input
             label="비밀번호 : "
@@ -198,7 +206,7 @@ export default function RegitForm() {
             onBlur={() => handleBlur("username")}
           />
           <span className="valid_text">{formErrors.username}</span>
-          <br/>
+          <br />
           <Input
             label="휴대폰 번호 : "
             type="text"
@@ -212,7 +220,8 @@ export default function RegitForm() {
           <span className="valid_text">{formErrors.phone}</span>
           <br />
           <div>
-            <button className="complete"
+            <button
+              className="complete"
               type="submit"
               disabled={isButtonDisabled}
               style={{

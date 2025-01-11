@@ -12,25 +12,34 @@ export default function MyPage() {
           <ul>
             <li>
               {/* 내 정보 관리 */}
-              <NavLink 
+              <NavLink
                 to="profile-info"
-                className={({ isActive }) => (isActive ? "menu-item active" : "menu-item")}>
+                className={({ isActive }) =>
+                  isActive ? "menu-item active" : "menu-item"
+                }
+              >
                 내 정보 관리
               </NavLink>
             </li>
             <li>
               {/* 예약내역 */}
-              <NavLink 
-                to="reservation-history" 
-                className={({ isActive }) => (isActive ? "menu-item active" : "menu-item")}>
+              <NavLink
+                to="reservation-history"
+                className={({ isActive }) =>
+                  isActive ? "menu-item active" : "menu-item"
+                }
+              >
                 예약 내역
               </NavLink>
             </li>
             <li>
               {/* 찜하기 */}
-              <NavLink 
-                to="wishlist" 
-                className={({ isActive }) => (isActive ? "menu-item active" : "menu-item")}>
+              <NavLink
+                to="wishlist"
+                className={({ isActive }) =>
+                  isActive ? "menu-item active" : "menu-item"
+                }
+              >
                 위시리스트
               </NavLink>
             </li>
