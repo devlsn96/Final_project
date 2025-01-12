@@ -140,6 +140,10 @@
 }
 
 .complete {
+  margin: 0 30px
+}
+
+.complete-button {
   font-family: "GmarketSansMedium";
   background-color: #4169e1;
   color: #fff;
@@ -149,6 +153,16 @@
   margin-left: 130px;
 }
 
-.complete:hover {
+.complete-button:hover {
   background-color: #6a92ee;
+}
+
+/* Input + 버튼을 포함 */
+.input-with-button {
+  display: flex;
+  align-items: center;
+}
+
+.input-with-button button{
+  margin-left: 10px;
 }

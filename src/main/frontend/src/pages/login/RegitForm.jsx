@@ -18,7 +18,11 @@ export default function RegitForm() {
     username: "",
     phone: "",
   });
+  const [emailCheckMsg, setEmailCheckMsg] = useState("");
+  const [IsEmailChecked, setIsEmailChecked] = useState(false);
   const [isButtonDisabled, setIsButtonDisabled] = useState(true);
+  const [isEmailCheckButtonDisabled, setIsEmailCheckButtonDisabled] =
+    useState(true);
   const navigate = useNavigate();
 
   function handleBlur(field) {
@@ -72,29 +76,34 @@ export default function RegitForm() {
 
     setFormErrors(errors);
     validateForm(errors);
+    setIsEmailCheckButtonDisabled(!email || errors.email !== "");
   }
 
   function validateForm(errors) {
     // errors가 객체인 경우에만 values 호출
     if (errors && typeof errors === "object") {
       const hasErrors = Object.values(errors).some((error) => error !== "");
-      setIsButtonDisabled(hasErrors); // 오류가 하나라도 있으면 버튼 비활성화
+      setIsButtonDisabled(hasErrors || !IsEmailChecked); // 오류가 하나라도 있으면 버튼 비활성화
     }
   }
 
   // 이메일 중복 체크
-  const handleEmailCheck = async (e) => {
-    e.preventDefault();
-    
+  const handleEmailCheck = async () => {
+    if (!email || formErrors.email) return;
+
     try {
       const response = await axios.post("/api/email-check", { email });
       if (!response.data.exists) {
         setEmailCheckMsg("이미 사용 중인 이메일입니다.");
+        setIsEmailChecked(false);
       } else {
         setEmailCheckMsg("사용 가능한 이메일입니다.");
+        setIsEmailChecked(true);
+        setFormErrors((prev) => ({ ...prev, email: "" })); // 오류 상태 해제
       }
     } catch (error) {
       setEmailCheckMsg("이메일 확인 중 오류가 발생했습니다.");
+      setIsEmailChecked(false);
     }
   };
 
@@ -132,8 +141,16 @@ export default function RegitForm() {
 
   useEffect(() => {
     // 입력값이 변경될 때마다 폼 유효성 검사를 다시 수행
-    validateForm();
-  }, [email, password, confirmPassword, username, phone]);
+    validateForm(formErrors);
+  }, [formErrors, IsEmailChecked]);
+
+  // 이메일 값 변경 시 중복 체크 상태 초기화
+  useEffect(() => {
+    setIsEmailChecked(false);
+    setEmailCheckMsg("");
+    setIsEmailCheckButtonDisabled(!email || formErrors.email !== "");
+    setFormErrors((prev) => ({ ...prev, email: "" })); // 오류 상태 해제
+  }, [email]);
 
   return (
     <div className="regit-wrap">
@@ -141,17 +158,33 @@ export default function RegitForm() {
         <h1>필수 정보 입력</h1>
         <p>가입을 위해 필수 정보를 입력해 주세요.</p>
         <form onSubmit={handleSubmit} className="regit-form">
-          <Input
-            label="이메일 : "
-            type="email"
-            name="email"
-            id="email"
-            value={email}
-            placeholder="abc@tripjava.co.kr"
-            onChange={(e) => setEmail(e.target.value)}
-            onBlur={() => handleBlur("email")}
-          />
-          <span className="valid_text">{formErrors.email}</span>
+          <div className="input-with-button">
+            <Input
+              label="이메일 : "
+              type="email"
+              name="email"
+              id="email"
+              value={email}
+              placeholder="abc@tripjava.co.kr"
+              onChange={(e) => setEmail(e.target.value)}
+              onBlur={() => handleBlur("email")}
+            />
+            <button
+              className="complete-button"
+              type="button"
+              disabled={isEmailCheckButtonDisabled}
+              onClick={handleEmailCheck}
+              style={{
+                backgroundColor: isEmailCheckButtonDisabled
+                  ? "#ccc"
+                  : "#4169e1",
+                cursor: isEmailCheckButtonDisabled ? "not-allowed" : "pointer",
+              }}
+            >
+              중복 체크
+            </button>
+          </div>
+          <span className="valid_text">{formErrors.email || emailCheckMsg}</span>
           <br />
           <Input
             label="비밀번호 : "
@@ -201,9 +234,9 @@ export default function RegitForm() {
           />
           <span className="valid_text">{formErrors.phone}</span>
           <br />
-          <div>
+          <div className="complete">
             <button
-              className="complete"
+              className="complete-button"
               type="submit"
               disabled={isButtonDisabled}
               style={{
