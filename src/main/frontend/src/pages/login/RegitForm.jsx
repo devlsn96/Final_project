@@ -184,7 +184,9 @@ export default function RegitForm() {
               중복 체크
             </button>
           </div>
-          <span className="valid_text">{formErrors.email || emailCheckMsg}</span>
+          <span className="valid_text">
+            {formErrors.email || emailCheckMsg}
+          </span>
           <br />
           <Input
             label="비밀번호 : "

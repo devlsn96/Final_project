@@ -59,11 +59,11 @@
 }
 
 /* Input + 버튼을 포함 */
-.inputWithButton {
+.input-with-button {
   display: flex;
   align-items: center;
 }
 
-.inputWithButton button {
+.input-with-button button {
   margin-left: 10px;
 }
