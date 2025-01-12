@@ -1,5 +1,5 @@
 /* 회원가입 섹션 */
-.regit-wrap {
+.regitWrap {
   display: inline;
   justify-content: center;
   align-items: center;
@@ -22,7 +22,7 @@
   text-align: center;
 }
 
-.regit-form {
+.regitForm {
   width: 100%;
   max-width: 400px;
   margin: 0 auto;
@@ -31,7 +31,7 @@
   gap: 20px;
 }
 
-.regit-form input {
+.regitForm input {
   font-family: "GmarketSansMedium";
   margin: 10px 0;
   border-radius: 5px;
@@ -44,7 +44,7 @@
   margin: 0 30px;
 }
 
-.complete-button {
+.complete_button {
   font-family: "GmarketSansMedium";
   background-color: #4169e1;
   color: #fff;
@@ -54,16 +54,22 @@
   margin-left: 130px;
 }
 
-.complete-button:hover {
+.complete_button:hover {
   background-color: #6a92ee;
 }
 
 /* Input + 버튼을 포함 */
-.input-with-button {
+.inputWithButton {
   display: flex;
   align-items: center;
 }
 
-.input-with-button button {
+.inputWithButton button {
   margin-left: 10px;
+}
+
+/* 유효성 메시지 */
+.valid_text {
+  font-size: 12px;
+  color: #ff4d4f;
 }

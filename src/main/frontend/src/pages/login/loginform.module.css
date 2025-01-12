@@ -1,4 +1,4 @@
-.login-wrap {
+.loginWrap {
   display: inline;
   justify-content: center;
   align-items: center;
@@ -12,10 +12,13 @@
   margin: 0 auto;
   margin-top: 50px;
   margin-bottom: 50px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  box-shadow: 1px 1px 10px rgba(143, 143, 143, 0.3);
 }
 
 /* 폼 컨테이너 */
-.login-form {
+.loginForm {
   width: 100%;
   max-width: 400px;
   margin: 0 auto;
@@ -28,12 +31,12 @@
   text-align: center;
 }
 
-.login-form {
+.loginForm {
   margin: 20px 0;
 }
 
 /* 입력 필드 */
-.login-form input {
+.loginForm input {
   font-family: "GmarketSansMedium";
   width: 100%;
   margin: 10px 0;
@@ -45,7 +48,7 @@
   transition: border-color 0.3s;
 }
 
-.login-form input:focus {
+.loginForm input:focus {
   outline: none;
   border-color: #4169e1;
 }
@@ -57,7 +60,7 @@
 }
 
 /* 버튼 */
-.login-form button[type="submit"] {
+.loginForm button[type="submit"] {
   font-family: "GmarketSansMedium";
   width: 100%;
   padding: 15px;
@@ -71,12 +74,12 @@
   transition: background-color 0.3s;
 }
 
-.login-form button[type="submit"]:disabled {
+.loginForm button[type="submit"]:disabled {
   background-color: #ccc;
   cursor: not-allowed;
 }
 
-.login-form button[type="submit"]:not(:disabled):hover {
+.loginForm button[type="submit"]:not(:disabled):hover {
   background-color: #6a92ee;
 }
 
@@ -93,7 +96,7 @@
   text-decoration: none;
 }
 
-.text-button:hover {
+.textButton:hover {
   color: #6a92ee;
   text-decoration: underline;
 }

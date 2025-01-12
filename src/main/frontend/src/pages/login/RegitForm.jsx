@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Input from "../../component/Input.jsx";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import "./regitform.css";
+import styles from "./regitform.module.css";
 
 export default function RegitForm() {
   const [email, setEmail] = useState("");
@@ -153,12 +153,12 @@ export default function RegitForm() {
   }, [email]);
 
   return (
-    <div className="regit-wrap">
-      <div className="regit">
+    <div className={styles.regitWrap}>
+      <div className={styles.regit}>
         <h1>필수 정보 입력</h1>
         <p>가입을 위해 필수 정보를 입력해 주세요.</p>
-        <form onSubmit={handleSubmit} className="regit-form">
-          <div className="input-with-button">
+        <form onSubmit={handleSubmit} className={styles.regitForm}>
+          <div className={styles.inputWithButton}>
             <Input
               label="이메일 : "
               type="email"
@@ -170,7 +170,7 @@ export default function RegitForm() {
               onBlur={() => handleBlur("email")}
             />
             <button
-              className="complete-button"
+              className={styles.complete_button}
               type="button"
               disabled={isEmailCheckButtonDisabled}
               onClick={handleEmailCheck}
@@ -184,7 +184,7 @@ export default function RegitForm() {
               중복 체크
             </button>
           </div>
-          <span className="valid_text">
+          <span className={styles.valid_text}>
             {formErrors.email || emailCheckMsg}
           </span>
           <br />
@@ -198,7 +198,7 @@ export default function RegitForm() {
             onChange={(e) => setPassword(e.target.value)}
             onBlur={() => handleBlur("password")}
           />
-          <span className="valid_text">{formErrors.password}</span>
+          <span className={styles.valid_text}>{formErrors.password}</span>
           <br />
           <Input
             label="비밀번호 확인 : "
@@ -210,7 +210,7 @@ export default function RegitForm() {
             onChange={(e) => setConfirmPassword(e.target.value)}
             onBlur={() => handleBlur("confirmPassword")}
           />
-          <span className="valid_text">{formErrors.confirmPassword}</span>
+          <span className={styles.valid_text}>{formErrors.confirmPassword}</span>
           <br />
           <Input
             label="이름 : "
@@ -222,7 +222,7 @@ export default function RegitForm() {
             onChange={(e) => setUsername(e.target.value)}
             onBlur={() => handleBlur("username")}
           />
-          <span className="valid_text">{formErrors.username}</span>
+          <span className={styles.valid_text}>{formErrors.username}</span>
           <br />
           <Input
             label="휴대폰 번호 : "
@@ -234,11 +234,11 @@ export default function RegitForm() {
             onChange={(e) => setPhone(e.target.value)}
             onBlur={() => handleBlur("phone")}
           />
-          <span className="valid_text">{formErrors.phone}</span>
+          <span className={styles.valid_text}>{formErrors.phone}</span>
           <br />
-          <div className="complete">
+          <div className={styles.complete}>
             <button
-              className="complete-button"
+              className={styles.complete_button}
               type="submit"
               disabled={isButtonDisabled}
               style={{

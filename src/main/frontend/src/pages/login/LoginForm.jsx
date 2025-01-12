@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Input from "../../component/Input";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
-import "./loginform.css";
+import styles from "./loginform.module.css";
 
 export default function LoginForm({ checkLoginStatus }) {
   const [email, setEmail] = useState("");
@@ -82,11 +82,11 @@ export default function LoginForm({ checkLoginStatus }) {
   };
 
   return (
-    <div className="login-wrap">
-      <div className="login">
+    <div className={styles.loginWrap}>
+      <div className={styles.login}>
         <h1>이메일로 시작하기</h1>
         <br />
-        <form onSubmit={handleSubmit} className="login-form">
+        <form onSubmit={handleSubmit} className={styles.loginForm}>
           <Input
             label="이메일"
             type="email"
@@ -97,7 +97,7 @@ export default function LoginForm({ checkLoginStatus }) {
             onChange={(e) => setEmail(e.target.value)}
             onBlur={() => handleBlur("email")}
           />
-          <span className="valid_text">{formErrors.email}</span>
+          <span className={styles.valid_text}>{formErrors.email}</span>
           <br />
           <Input
             label="비밀번호"
@@ -109,7 +109,7 @@ export default function LoginForm({ checkLoginStatus }) {
             onChange={(e) => setPassword(e.target.value)}
             onBlur={() => handleBlur("password")}
           />
-          <span className="valid_text">{formErrors.password}</span>
+          <span className={styles.valid_text}>{formErrors.password}</span>
           <br />
           <button
             type="submit"
@@ -123,10 +123,10 @@ export default function LoginForm({ checkLoginStatus }) {
           </button>
         </form>
         <br />
-        <div className="regitpage">
-          <div className="caption">계정이 없으신가요?</div>
+        <div className={styles.regitpage}>
+          <div className={styles.caption}>계정이 없으신가요?</div>
           <Link to="/login/email/regit">
-            <div className="text-button">이메일로 회원가입</div>
+            <div className={styles.textButton}>이메일로 회원가입</div>
           </Link>
         </div>
       </div>
