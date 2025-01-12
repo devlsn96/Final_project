@@ -10,8 +10,8 @@ public class WebConfig2 implements WebMvcConfigurer{
 	public void addInterceptors(InterceptorRegistry registry) {
 		registry.addInterceptor(new LoginCheckInterceptor())
 		.addPathPatterns("/**")
-		.excludePathPatterns("/api", "/api/login", "/api/logout", "/api/kakao-logout", "/api/regit",
+		.excludePathPatterns("/error", "/api", "/api/login", "/api/logout", "/api/kakao-logout", "/api/regit",
 		 "/api/email-check", "/api/accommodation/**", "/api/accommodations/**", "**/register-phone", "/api/session/**",
-		 "/api/auth/kakao", "/auth/kakao/callback");
+		 "/api/auth/kakao", "/auth/kakao/callback", "/api/reviews/**", "/api/reservation/**");
 	}
 }

@@ -790,10 +790,10 @@ input:disabled {
 
 #box_after {
   border-radius: 10px;
-  padding: 100px 0;
-  margin-top: 30px;
-  margin-right: auto;
-  margin-left: auto;
+  /* padding: 100px 0; */
+  margin: 30px auto;
+  /* margin-right: auto;
+  margin-left: auto; */
   color: #333d4b;
   text-align: center; /* 텍스트 및 내부 요소 가운데 정렬 */
 }

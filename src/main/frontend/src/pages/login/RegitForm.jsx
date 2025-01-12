@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Input from "../../component/Input.jsx";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import "./loginform.css";
+import "./regitform.css";
 
 export default function RegitForm() {
   const [email, setEmail] = useState("");
