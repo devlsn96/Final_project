@@ -1,12 +1,13 @@
 @font-face {
-  font-family: 'GmarketSansMedium';
-  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+  font-family: "GmarketSansMedium";
+  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff")
+    format("woff");
   font-weight: normal;
   font-style: normal;
 }
 
 body {
-  font-family: 'GmarketSansMedium';
+  font-family: "GmarketSansMedium";
   background-color: #fff;
   margin: 0;
   padding: 0;
@@ -76,8 +77,8 @@ body {
 }
 
 .accomname {
-float: left;
-width: fit-content;
+  float: left;
+  width: fit-content;
 }
 
 .detail-container p {
@@ -86,22 +87,22 @@ width: fit-content;
 
 /*찜하기 버튼 */
 .favorite-button {
-all: unset;
-background: none;
-border: none;
-font-size: 24px;
-cursor: pointer;
-color: red;
-margin-left: 20px;
-margin-top: 30px;
+  all: unset;
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: red;
+  margin-left: 20px;
+  margin-top: 30px;
 }
 
 .favorite-button:hover {
-transform: scale(1.2);
+  transform: scale(1.2);
 }
 
 .favorite-button:focus {
-outline: none; /* 포커스 상태 테두리 제거 */
+  outline: none; /* 포커스 상태 테두리 제거 */
 }
 
 /* 예약 정보창 */
@@ -113,7 +114,7 @@ outline: none; /* 포커스 상태 테두리 제거 */
   border-radius: 20px;
   margin: 15px;
   height: 100%;
-  box-shadow: 1px 1px 10px rgba(143, 143, 143, 0.3);    
+  box-shadow: 1px 1px 10px rgba(143, 143, 143, 0.3);
 }
 
 .reservation table {
@@ -135,7 +136,7 @@ outline: none; /* 포커스 상태 테두리 제거 */
   outline: none;
   width: 100%;
   font-size: 16px;
-  font-family: 'GmarketSansMedium';
+  font-family: "GmarketSansMedium";
   text-align: center;
   margin-bottom: 0px;
 }
@@ -150,7 +151,7 @@ outline: none; /* 포커스 상태 테두리 제거 */
 }
 
 .confirm {
-  font-family: 'GmarketSansMedium';
+  font-family: "GmarketSansMedium";
   width: 100%;
   border-radius: 20px;
   font-size: 16px;
@@ -180,7 +181,6 @@ outline: none; /* 포커스 상태 테두리 제거 */
 .service .service-list {
   display: flex;
   flex-wrap: wrap;
-  
 }
 
 .service .service-item {

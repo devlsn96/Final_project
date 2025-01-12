@@ -56,28 +56,29 @@ export default function LoginForm({ checkLoginStatus }) {
   const handleSubmit = async (e) => {
     e.preventDefault(); // 기본 폼 제출 동작 방지
 
-    // axios를 사용해 로그인 요청
-    axios
-      .post("/api/login", { email, password }, { withCredentials: true })
-      .then((response) => {
-        if (response.status === 200) {
-          alert("로그인 성공!");
-          checkLoginStatus();
-          navigate("/"); // 홈 화면으로 리다이렉트
-        }
-      })
-      .catch((error) => {
-        alert("로그인 실패!");
-        if (error.response && error.response.data) {
-          setErrorMsg(error.response.data.msg); // 서버에서 반환된 오류 메시지 표시
-          console.log(
-            "서버에서 반환된 오류 메시지 : " + error.response.data.msg
-          );
-        } else {
-          setErrorMsg("로그인 중 오류가 발생했습니다. 다시 시도해주세요.");
-          console.log("리액트 오류 메시지 : " + error.message);
-        }
-      });
+    try {
+      // axios를 사용해 로그인 데이터 전송
+      const response = await axios.post("/api/login", { email, password });
+      {
+        withCredentials: true;
+      } // 세션 쿠키 유지
+      // 성공 처리
+      if (response.status === 200) {
+        alert("로그인 성공!");
+        checkLoginStatus();
+        navigate("/"); // 홈 화면으로 리다이렉트
+      }
+    } catch (error) {
+      // 로그인 실패
+      alert("로그인 실패!");
+      if (error.response && error.response.data) {
+        setErrorMsg(error.response.data.msg); // 서버에서 반환된 오류 메시지 표시
+        console.log("서버에서 반환된 오류 메시지 : " + errorMsg);
+      } else {
+        setErrorMsg("로그인 중 오류가 발생했습니다. 다시 시도해주세요.");
+        console.log("리액트 오류 메시지 : " + errorMsg);
+      }
+    }
   };
 
   return (

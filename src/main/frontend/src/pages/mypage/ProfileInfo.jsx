@@ -15,7 +15,7 @@ export default function ProfileInfo({ user, setUser, token, setToken }) {
       try {
         // 백엔드 API 호출
         const response = await axios.get(`/api/${user.userId}`);
-        setUserInfo(response.data.user); // 백엔드 데이터 구조에 맞게 설정
+        setUserInfo(response.data.user);
         setFormValues(response.data.user);
       } catch (error) {
         console.error("사용자 정보 로드 실패:", error);
@@ -27,7 +27,7 @@ export default function ProfileInfo({ user, setUser, token, setToken }) {
       fetchUserInfo();
     }
   }, [user]);
-  
+
   // 입력 변경 핸들러
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -84,8 +84,12 @@ export default function ProfileInfo({ user, setUser, token, setToken }) {
     const deleteAccountUrl = token
       ? `/api/${user.userId}/kakao-unlink?accessToken=${token}` // 소셜 로그인 유저의 경우
       : `/api/${user.userId}/delete/`; // 일반 로그인 유저의 경우
-    
-    if (window.confirm(`정말로 탈퇴하시겠습니까?\n\n${user.username}님께서 이 서비스에서 사용하는 모든 정보가 소멸될 예정입니다.\n`)) {
+
+    if (
+      window.confirm(
+        `정말로 탈퇴하시겠습니까?\n\n${user.username}님께서 이 서비스에서 사용하는 모든 정보가 소멸될 예정입니다.\n`
+      )
+    ) {
       try {
         const response = await axios.post(
           deleteAccountUrl,
@@ -108,9 +112,9 @@ export default function ProfileInfo({ user, setUser, token, setToken }) {
   };
 
   // 전화번호 포맷팅 함수
-  function formatPhoneNumber (num) {
+  function formatPhoneNumber(num) {
     return num.replace(/(\d{3})(\d{3,4})(\d{4})/, "$1-$2-$3");
-  };
+  }
 
   if (errorMsg) {
     return <p>{errorMsg}</p>;
@@ -126,7 +130,7 @@ export default function ProfileInfo({ user, setUser, token, setToken }) {
       <div className={styles.mypageContainer}>
         <div className={styles.fieldGroup}>
           <label className={styles.maypageLabel}>이메일</label>
-          <input 
+          <input
             name="email"
             value={formValues.email}
             onChange={handleInputChange}
@@ -135,7 +139,8 @@ export default function ProfileInfo({ user, setUser, token, setToken }) {
           />
         </div>
         <div className={styles.fieldGroup}>
-          <label className={styles.label}>이름</label><br/>
+          <label className={styles.label}>이름</label>
+          <br />
           <input
             name="username"
             value={formValues.username}
@@ -145,10 +150,13 @@ export default function ProfileInfo({ user, setUser, token, setToken }) {
           />
         </div>
         <div>
-          <label className={styles.label}>휴대폰번호</label><br/>
+          <label className={styles.label}>휴대폰번호</label>
+          <br />
           <input
             name="phone"
-            value={isEditing ? formValues.phone : formatPhoneNumber(formValues.phone)}
+            value={
+              isEditing ? formValues.phone : formatPhoneNumber(formValues.phone)
+            }
             onChange={handleInputChange}
             readOnly={!isEditing}
             className={isEditing ? styles.mypageInput : styles.readOnlyInput}
@@ -158,19 +166,16 @@ export default function ProfileInfo({ user, setUser, token, setToken }) {
           {isEditing ? "저장" : "수정"}
         </button>
         {isEditing && (
-          <button
-            className={styles.button}
-            onClick={() => setIsEditing(false)}
-          >
+          <button className={styles.button} onClick={() => setIsEditing(false)}>
             취소
           </button>
         )}
       </div>
       <div className={styles.inlineMessage}>
-          <span>더 이상 트립자바를 이용하기 원하지 않으십니까? </span>
-          <button className={styles.linkButton} onClick={handleDeleteAccount}>
-            회원탈퇴
-          </button>
+        <span>더 이상 트립자바를 이용하기 원하지 않으십니까? </span>
+        <button className={styles.linkButton} onClick={handleDeleteAccount}>
+          회원탈퇴
+        </button>
       </div>
     </div>
   );

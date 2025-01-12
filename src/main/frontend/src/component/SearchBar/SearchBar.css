@@ -1,12 +1,13 @@
 @font-face {
-  font-family: 'GmarketSansMedium';
-  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+  font-family: "GmarketSansMedium";
+  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff")
+    format("woff");
   font-weight: normal;
   font-style: normal;
 }
 
 .search-bar {
-  font-family: 'GmarketSansMedium';
+  font-family: "GmarketSansMedium";
   display: flex; /* 가로 정렬 */
   align-items: center; /* 세로 중앙 정렬 */
   gap: 15px; /* 요소 간 간격 */
@@ -19,7 +20,7 @@
 
 .date-button,
 .guest-button {
-  font-family: 'GmarketSansMedium';
+  font-family: "GmarketSansMedium";
   flex: 1; /* 모든 요소가 동일한 너비를 차지 */
   padding: 15px 20px; /* 내부 패딩 설정 */
   border: 1px solid #ddd;
@@ -34,7 +35,7 @@
 }
 
 .search-button {
-  font-family: 'GmarketSansMedium';
+  font-family: "GmarketSansMedium";
   flex: 0; /* 검색 버튼은 고정된 크기를 사용 */
   padding: 15px 25px; /* 검색 버튼 내부 여백 */
   background-color: #4169e1;
@@ -143,5 +144,5 @@
 }
 
 .location-input input {
-  font-family: 'GmarketSansMedium';
+  font-family: "GmarketSansMedium";
 }

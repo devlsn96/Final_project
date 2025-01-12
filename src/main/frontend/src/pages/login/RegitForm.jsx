@@ -11,7 +11,6 @@ export default function RegitForm() {
   const [username, setUsername] = useState("");
   const [phone, setPhone] = useState("");
   const [errorMsg, setErrorMsg] = useState("");
-  const [emailCheckMsg, setEmailCheckMsg] = useState("");
   const [formErrors, setFormErrors] = useState({
     email: "",
     password: "",
@@ -84,12 +83,9 @@ export default function RegitForm() {
   }
 
   // 이메일 중복 체크
-  const handleEmailCheck = async () => {
-    if (!email) {
-      setEmailCheckMsg("이메일을 입력해주세요.");
-      return;
-    }
-
+  const handleEmailCheck = async (e) => {
+    e.preventDefault();
+    
     try {
       const response = await axios.post("/api/email-check", { email });
       if (!response.data.exists) {
@@ -154,22 +150,8 @@ export default function RegitForm() {
             placeholder="abc@tripjava.co.kr"
             onChange={(e) => setEmail(e.target.value)}
             onBlur={() => handleBlur("email")}
-            button={{
-              text: "중복확인",
-              onClick: handleEmailCheck,
-              disabled: !email, // 이메일이 비어 있으면 버튼 비활성화
-            }}
           />
           <span className="valid_text">{formErrors.email}</span>
-          {emailCheckMsg && (
-            <span
-              className={`check_msg ${
-                emailCheckMsg.includes("이미") ? "error" : ""
-              }`}
-            >
-              {emailCheckMsg}
-            </span>
-          )}
           <br />
           <Input
             label="비밀번호 : "

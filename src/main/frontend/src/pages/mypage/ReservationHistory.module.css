@@ -61,7 +61,8 @@
   font-weight: bold;
 }
 
-.roomInfo, .priceInfo {
+.roomInfo,
+.priceInfo {
   font-size: 14px;
 }
 
