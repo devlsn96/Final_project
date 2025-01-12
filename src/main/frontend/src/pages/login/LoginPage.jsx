@@ -24,16 +24,7 @@ export default function LoginPage() {
           {/* 소셜 로그인 */}
           <button
             onClick={() => {
-              // window.location.href = "/api/auth/kakao";
-              window.open(
-                "/api/auth/kakao",
-                "KakaoLogin",
-                "width=600, height=800, top=" +
-                  (window.innerHeight / 2 - 800 / 2) +
-                  ", left=" +
-                  (window.innerWidth / 2 - 600 / 2) +
-                  ", resizable=no, scrollbars=yes"
-              );
+              window.location.href = "/api/auth/kakao";
             }}
           >
             <img src={kakaoImg} />
