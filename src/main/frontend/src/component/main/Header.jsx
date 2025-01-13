@@ -8,21 +8,11 @@ import SearchBar from "../SearchBar/SearchBar.jsx";
 export default function Header({ user, setUser, token, setToken }) {
   const navigate = useNavigate();
 
-  // // **추가된 브라우저 데이터 삭제 함수**
-  // const clearBrowserData = () => {
-  //   // 세션 스토리지 초기화
-  //   sessionStorage.clear();
-
-  //   // 로컬 스토리지 초기화
-  //   localStorage.clear();
-
-  //   // 쿠키 초기화
-  //   document.cookie.split(";").forEach((cookie) => {
-  //     const eqPos = cookie.indexOf("=");
-  //     const name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
-  //     document.cookie = `${name}=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=/`;
-  //   });
-  // };
+  // 추가된 브라우저 데이터 삭제 함수
+  const clearBrowserData = () => {
+    // 세션 스토리지 초기화
+    sessionStorage.clear();
+  };
 
   const handleLogout = async () => {
     try {
@@ -44,9 +34,8 @@ export default function Header({ user, setUser, token, setToken }) {
         setUser(null);
         setToken(null); // 상태 초기화
         alert("로그아웃 성공");
-
-        // // **브라우저 데이터 삭제 실행**
-        // clearBrowserData();
+        // 브라우저 데이터 삭제 실행
+        clearBrowserData();
 
         if (token) {
           const YOUR_CLIENT_ID = "6f14e0deeef1d4d349512266f3dd47fc";
