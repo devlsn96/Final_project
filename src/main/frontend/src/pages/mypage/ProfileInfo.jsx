@@ -60,24 +60,24 @@ export default function ProfileInfo({ user, setUser, token, setToken }) {
     }
   };
 
-  const clearBrowserData = () => {
-    // 세션 스토리지 초기화
-    sessionStorage.clear();
+  // const clearBrowserData = () => {
+  //   // 세션 스토리지 초기화
+  //   sessionStorage.clear();
 
-    // 로컬 스토리지 초기화
-    localStorage.clear();
+  //   // 로컬 스토리지 초기화
+  //   localStorage.clear();
 
-    // 쿠키 초기화
-    document.cookie.split(";").forEach((cookie) => {
-      const eqPos = cookie.indexOf("=");
-      const name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
-      document.cookie = `${name}=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=/`;
-    });
+  //   // 쿠키 초기화
+  //   document.cookie.split(";").forEach((cookie) => {
+  //     const eqPos = cookie.indexOf("=");
+  //     const name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+  //     document.cookie = `${name}=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=/`;
+  //   });
 
-    // 세션을 강제로 종료
-    window.sessionStorage.clear(); // 세션 저장소 클리어
-    window.localStorage.clear(); // 로컬 저장소 클리어
-  };
+  //   // 세션을 강제로 종료
+  //   window.sessionStorage.clear(); // 세션 저장소 클리어
+  //   window.localStorage.clear(); // 로컬 저장소 클리어
+  // };
 
   // 회원탈퇴 함수
   const handleDeleteAccount = async () => {
@@ -100,7 +100,7 @@ export default function ProfileInfo({ user, setUser, token, setToken }) {
           setUser(null);
           setToken(null);
           alert("회원탈퇴가 완료되었습니다.");
-          clearBrowserData();
+          // clearBrowserData();
           // 탈퇴 후 메인 페이지로 이동
           navigate("/", { replace: true }); // replace: true로 세션을 새로 시작하도록 설정
         }
