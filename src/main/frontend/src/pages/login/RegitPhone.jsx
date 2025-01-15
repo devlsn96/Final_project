@@ -1,10 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Input from "../../component/Input";
 import style from "./RegitPhone.module.css";
+import { UserContext } from "../../UserContext";
 
-function RegitPhone({ user }) {
+function RegitPhone() {
+  const { user } = useContext(UserContext);
   const [phone, setPhone] = useState("");
   const [error, setError] = useState("");
   const [isButtonDisabled, setIsButtonDisabled] = useState(true);

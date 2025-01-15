@@ -59,7 +59,7 @@ export default function Information({ accommodation, userId }) {
         );
       } else {
         await axios.post(
-          `http://localhost:9090/api/wishlist`,
+          'http://localhost:9090/api/wishlist',
           { accomId },
           { withCredentials: true }
         );

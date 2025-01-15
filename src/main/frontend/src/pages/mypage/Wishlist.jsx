@@ -1,9 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext,useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom"; // React Router 훅 추가
 import styles from "./Wishlist.module.css";
 import axios from "axios";
+import { UserContext } from "../../UserContext";
 
-const Wishlist = React.memo(({ user }) => {
+
+const Wishlist = React.memo(() => {
+  const { user } = useContext(UserContext);
   const [wishlistItems, setWishlistItems] = useState([]);
   const [hoveredItemId, setHoveredItemId] = useState(null);
   const navigate = useNavigate(); // 페이지 이동 함수

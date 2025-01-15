@@ -1,10 +1,12 @@
 // ReservationHistory.jsx
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./ReservationHistory.module.css";
 import axios from "axios";
+import { UserContext } from "../../UserContext";
 
-const ReservationHistory = React.memo(({ user }) => {
+const ReservationHistory = React.memo(() => {
+  const { user } = useContext(UserContext);
   const [bookedReservations, setBookedReservations] = useState([]);
   const [cancelledReservations, setCancelledReservations] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -40,13 +42,19 @@ const ReservationHistory = React.memo(({ user }) => {
     }
   }, [userId]);
 
-  const fetchReservations = (userId) => {
+  const fetchReservations = (userId, token) => {
     Promise.all([
       axios.get(`http://localhost:9090/api/reservation/search/${userId}`, {
         withCredentials: true,
+        headers: {
+          Authorization: `Bearer ${token}`, // 토큰 포함
+        },
       }),
       axios.get(`http://localhost:9090/api/reservation/cancelled/${userId}`, {
         withCredentials: true,
+        headers: {
+          Authorization: `Bearer ${token}`, // 토큰 포함
+        },
       }),
     ])
       .then(([ongoingRes, cancelledRes]) => {

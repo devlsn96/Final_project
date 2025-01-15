@@ -10,12 +10,17 @@ import ReviewForm from "../review/ReviewForm.jsx";
 import Location from "./Location.jsx";
 import ImageGallery from "./ImageGallery.jsx";
 import "./Detail.css";
+import { useContext } from "react";
+import { UserContext } from "../../UserContext.jsx";
 
-function AccommodationDetailPage({ userId }) {
+function AccommodationDetailPage() {
+  const { user } = useContext(UserContext);
   const { accomId } = useParams();
   const [accommodation, setAccommodation] = useState(null);
   const [reviews, setReviews] = useState([]);
   const [editingReview, setEditingReview] = useState(null); // 수정 중인 리뷰 상태
+
+  const userId = user?.id;
 
   useEffect(() => {
     if (!accomId) return;

@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import Input from "../../component/Input";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import styles from "./loginform.module.css";
+import { UserContext } from "../../UserContext";
 
-export default function LoginForm({ checkLoginStatus }) {
+export default function LoginForm() {
+  const { checkLoginStatus } = useContext(UserContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMsg, setErrorMsg] = useState("");

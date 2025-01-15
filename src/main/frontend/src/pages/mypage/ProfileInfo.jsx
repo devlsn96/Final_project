@@ -1,9 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import styles from "./ProfileInfo.module.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { UserContext } from "../../UserContext";
 
-export default function ProfileInfo({ user, setUser, token, setToken }) {
+export default function ProfileInfo() {
+  const { user, setUser, token, setToken } = useContext(UserContext);
   const [userInfo, setUserInfo] = useState(null);
   const [isEditing, setIsEditing] = useState(false);
   const [formValues, setFormValues] = useState({});

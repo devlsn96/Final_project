@@ -1,11 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import "./Header.css";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import SearchBar from "../SearchBar/SearchBar.jsx";
+import { UserContext } from "../../UserContext.jsx";
 
-export default function Header({ user, setUser, token, setToken }) {
+export default function Header() {
+  const { user, token, setUser, setToken } = useContext(UserContext);
   const navigate = useNavigate();
 
   // 추가된 브라우저 데이터 삭제 함수

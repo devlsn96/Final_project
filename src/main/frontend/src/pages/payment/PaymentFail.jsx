@@ -1,9 +1,10 @@
 import { Link, useSearchParams, useNavigate } from "react-router-dom";
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
 import styles from "./Payment.module.css";
+import { UserContext } from "../../UserContext";
 
-export default function FailPage({ user }) {
-  const [searchParams] = useSearchParams();
+export default function FailPage() {
+  const { user } = useContext(UserContext);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -26,20 +27,6 @@ export default function FailPage({ user }) {
           <br />
           결제를 다시 시도해주세요.
         </h2>
-
-        {/* <div className="p-grid typography--p" style={{ marginTop: "50px" }}>
-        <div className="p-grid-col text--left">
-          <b>에러메시지</b>
-        </div>
-        <div className="p-grid-col text--right" id="message">{`${searchParams.get("message")}`}</div>
-      </div>
-      <div className="p-grid typography--p" style={{ marginTop: "10px" }}>
-        <div className="p-grid-col text--left">
-          <b>에러코드</b>
-        </div>
-        <div className="p-grid-col text--right" id="code">{`${searchParams.get("code")}`}</div>
-      </div> */}
-
         <div className={styles.button_container}>
           <Link to="/">
             <button id="homeButton" className={styles.button}>

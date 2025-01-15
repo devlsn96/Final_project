@@ -1,10 +1,12 @@
-import { useEffect, useState } from "react";
+import { useContext,useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import styles from "./Payment.module.css";
+import { UserContext } from "../../UserContext";
 
-export default function PaymentSuccessPage({ user }) {
+export default function PaymentSuccessPage() {
+  const { user } = useContext(UserContext);
   const navigate = useNavigate();
-
+  
   useEffect(() => {
     if (!user) {
       navigate("/login");
