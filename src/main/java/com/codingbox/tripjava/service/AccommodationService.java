@@ -10,7 +10,8 @@ import com.codingbox.tripjava.repository.AccommodationRepository;
 import com.codingbox.tripjava.repository.ReviewRepository;
 import com.codingbox.tripjava.repository.RoomTypePriceRepository;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
+
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -18,15 +19,11 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
+@RequiredArgsConstructor
 public class AccommodationService {
 
-    @Autowired
     private AccommodationRepository accommodationRepository;
-
-    @Autowired
     private ReviewRepository reviewRepository;
-    
-    @Autowired
     private RoomTypePriceRepository roomTypePriceRepository;
 
     public AccommodationDTO getAccommodationDetails(Integer accomId) {

@@ -6,18 +6,17 @@ import com.codingbox.tripjava.dto.SearchResultDTO;
 import com.codingbox.tripjava.entity.Accommodation;
 import com.codingbox.tripjava.repository.AccommodationRepository2;
 
+import lombok.RequiredArgsConstructor;
+
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class AccommodationService1 {
 
     private final AccommodationRepository2 accommodationRepository;
-
-    public AccommodationService1(AccommodationRepository2 accommodationRepository) {
-        this.accommodationRepository = accommodationRepository;
-    }
 
     public List<Accommodation> searchAccommodations(SearchAccommodationRequestDTO request) {
     	List<Accommodation> test = accommodationRepository.searchAccommodations(request); 

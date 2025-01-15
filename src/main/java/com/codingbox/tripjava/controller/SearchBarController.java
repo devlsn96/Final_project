@@ -55,26 +55,6 @@ public class SearchBarController {
         return ResponseEntity.ok(results);
     }
     
-//    // 숙소 상세페이지
-//    @GetMapping("/{id}/location")
-//    public ResponseEntity<LocationDTO> getAccommodationLocation(@PathVariable int id) {
-//        Accommodation accommodation = accommodationService.findById(id);
-//        if (accommodation == null) {
-//            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
-//        }
-//        LocationDTO location = new LocationDTO(accommodation.getLatitude(), accommodation.getLongitude());
-//        return ResponseEntity.ok(location);
-//    }
-
-    
-//    @GetMapping("/all")
-//    public List<AccommodationResponseDTO> getAllAccommodations() {
-//        List<Accommodation> accommodations = accommodationService.getAllAccommodationsWithDetails();
-//        return accommodations.stream()
-//                .map(AccommodationResponseDTO::new)
-//                .collect(Collectors.toList());
-//    }
-    
     // 추천 숙소 가져오는 컨트롤러
     @GetMapping()
     public List<AccommodationRecommendationDTO> getTop12Accommodations() {

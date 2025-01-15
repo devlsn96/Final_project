@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import "./ReviewList.css";
+import { UserContext } from "../../UserContext";
 
 function ReviewForm({
   accommodationId,
@@ -8,11 +9,13 @@ function ReviewForm({
   setEditingReview,
   fetchReviews,
 }) {
+  const { user } = useContext(UserContext);
   const [reviewText, setReviewText] = useState(""); // 리뷰 내용
   const [rating, setRating] = useState(5); // 평점
   const [reviewDate, setReviewDate] = useState(""); // 작성 날짜
   const [reviewImagePath, setReviewImagePath] = useState(null); // 이미지 경로
-  const [userId, setUserId] = useState(null); // 로그인된 사용자 ID
+
+  const userId = user?.id;
 
   // 디버깅: editingReview 값 확인
   useEffect(() => {
@@ -28,25 +31,6 @@ function ReviewForm({
           : editingReview.reviewImagePath
       );
     }
-
-    // 로그인된 사용자 정보 가져오기
-    const fetchUser = async () => {
-      try {
-        const response = await axios.get(
-          "http://localhost:9090/api/session/user",
-          { withCredentials: true }
-        );
-        if (response.data) {
-          setUserId(response.data.userId); // 사용자 ID 설정
-        } else {
-          alert("로그인되어 있지 않습니다.");
-        }
-      } catch (error) {
-        console.error("로그인 정보 조회 실패:", error);
-      }
-    };
-
-    fetchUser();
   }, [editingReview]);
 
   const handleSubmit = async (e) => {

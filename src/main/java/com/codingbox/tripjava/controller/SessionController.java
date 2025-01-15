@@ -4,9 +4,6 @@ import jakarta.servlet.http.HttpSession;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import com.codingbox.tripjava.entity.User;
-import com.codingbox.tripjava.session.SessionConst;
-
 import java.util.Map;
 
 @RestController
@@ -30,13 +27,5 @@ public class SessionController {
             return ResponseEntity.notFound().build();
         }
         return ResponseEntity.ok(searchData);
-    }
-    @GetMapping("/user")
-    public ResponseEntity<User> getLoggedInUser(HttpSession session) {
-        User user = (User) session.getAttribute(SessionConst.LOGIN_MEMBER);
-        if (user == null) {
-            return ResponseEntity.status(401).body(null);  // 로그인되지 않으면 401 반환
-        }
-        return ResponseEntity.ok(user);  // 로그인된 사용자 정보 반환
     }
 }
