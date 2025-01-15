@@ -27,9 +27,9 @@ function SearchBar() {
   };
 
   const handleSearch = async () => {
-    // 예약 가능한 날짜 범위 설정 (12/24~12/31)
-    const availableStart = new Date("2024-12-24");
-    const availableEnd = new Date("2024-12-31");
+    // 예약 가능한 날짜 범위 설정 (12/24~12/31) => 한정하지 않음
+    const availableStart = new Date("2025-01-15");
+    const availableEnd = new Date("2025-01-31");
 
     const checkInDate = new Date(dates.checkIn);
     const checkOutDate = new Date(dates.checkOut);

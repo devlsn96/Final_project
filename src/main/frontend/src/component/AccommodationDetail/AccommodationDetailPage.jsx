@@ -26,7 +26,7 @@ function AccommodationDetailPage() {
     if (!accomId) return;
 
     // 유저 정보 세션 저장
-    if (userId) sessionStorage.setItem("userId", userId);
+    // if (userId) sessionStorage.setItem("userId", userId);
 
     // 숙소 정보 가져오기
     const accomUrl = userId
@@ -72,7 +72,7 @@ function AccommodationDetailPage() {
       <ImageGallery imageUrls={imageUrls} />
 
       <div className="info-wrap">
-        <Information accommodation={accommodation} userId={userId} />
+        <Information accommodation={accommodation} />
         <Reservation accommodation={accommodation} />
       </div>
 

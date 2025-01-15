@@ -1,10 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import "./Detail.css";
 import { useNavigate } from "react-router-dom";
+import { UserContext } from "../../UserContext";
 
-export default function Information({ accommodation, userId }) {
+export default function Information({ accommodation }) {
+  const { user } =useContext(UserContext);
   const navigate = useNavigate();
+
+  const userId = user?.id;
+  
   // 데이터 유효성 검증
   if (!accommodation?.accommodation) {
     console.error("Invalid accommodation data:", accommodation);
@@ -54,12 +59,12 @@ export default function Information({ accommodation, userId }) {
     try {
       if (isFavorited) {
         await axios.delete(
-          `http://localhost:9090/api/wishlist/${userId}/${accomId}`, // userId 사용
+          `/api/wishlist/${userId}/${accomId}`, // userId 사용
           { withCredentials: true }
         );
       } else {
         await axios.post(
-          'http://localhost:9090/api/wishlist',
+          '/api/wishlist',
           { accomId },
           { withCredentials: true }
         );

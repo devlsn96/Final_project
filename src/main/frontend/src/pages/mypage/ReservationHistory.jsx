@@ -1,11 +1,10 @@
 // ReservationHistory.jsx
 import React, { useContext, useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import styles from "./ReservationHistory.module.css";
 import axios from "axios";
 import { UserContext } from "../../UserContext";
 
-const ReservationHistory = React.memo(() => {
+export default function ReservationHistory() {
   const { user } = useContext(UserContext);
   const [bookedReservations, setBookedReservations] = useState([]);
   const [cancelledReservations, setCancelledReservations] = useState([]);
@@ -13,7 +12,6 @@ const ReservationHistory = React.memo(() => {
   const [error, setError] = useState(null);
   const [showConfirmModal, setShowConfirmModal] = useState(false);
   const [selectedReservation, setSelectedReservation] = useState(null);
-  const navigate = useNavigate();
 
   // 숙박 일수 계산
   function calculateNights(checkInDate, checkOutDate) {
@@ -205,6 +203,5 @@ const ReservationHistory = React.memo(() => {
       )}
     </div>
   );
-});
+};
 
-export default ReservationHistory;

@@ -2,10 +2,10 @@ import React, { createContext, useState, useEffect } from "react";
 import axios from "axios";
 
 export const UserContext = createContext({
-    user: [],
-    setUser: [],
-    token: [],
-    setToken: [],
+    user: {},
+    setUser: {},
+    token: {},
+    setToken: {},
     checkLoginStatus: () => { }
 });
 

@@ -1,8 +1,9 @@
 import { loadTossPayments } from "@tosspayments/tosspayments-sdk";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import styles from "./Payment.module.css";
+import { UserContext } from "../../UserContext";
 
 // 토스페이 키
 const clientKey = "test_gck_docs_Ovk5rk1EwkEbP0W43n07xlzm";
@@ -17,6 +18,7 @@ function getDateWithWeekday(dateString) {
 }
 
 export default function PaymentCheckoutPage() {
+  const { user } = useContext(UserContext);
   const navigate = useNavigate();
   const [userData, setUserData] = useState({ username: "", phone: "" });
   const [numberOfNights, setNumberOfNights] = useState(0);
@@ -25,7 +27,8 @@ export default function PaymentCheckoutPage() {
   const [ready, setReady] = useState(false);
   const [widgets, setWidgets] = useState(null);
 
-  const userId = sessionStorage.getItem("userId");
+  // const userId = sessionStorage.getItem("userId");
+  const userId = user?.id;
   const checkIn = new Date(sessionStorage.getItem("checkIn"));
   const checkOut = new Date(sessionStorage.getItem("checkOut"));
   const roomPrice = sessionStorage.getItem("roomPrice");
