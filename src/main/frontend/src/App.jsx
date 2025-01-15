@@ -32,35 +32,34 @@ function App() {
   const [loading, setLoading] = useState(true); // 로딩 상태
 
   // 세션 상태 확인
-  const checkLoginStatus = () => {
-    axios
-      .get("http://localhost:9090/api/session", {
-        withCredentials: true,
-      })
-      .then((response) => {
-        if (response.status === 200) {
-          const { user: fetchedUser, accessToken } = response.data;
-          setUser({ ...fetchedUser, id: fetchedUser.userId });
-          setToken(accessToken || null);
-        } else {
+  useEffect(() => {
+    const checkLoginStatus = () => {
+      axios
+        .get("http://localhost:9090/api/session", {
+          withCredentials: true,
+        })
+        .then((response) => {
+          if (response.status === 200) {
+            const { user: fetchedUser, accessToken } = response.data;
+            setUser({ ...fetchedUser, id: fetchedUser.userId });
+            setToken(accessToken || null);
+          } else {
+            setUser(null);
+            setToken(null);
+          }
+        })
+        .catch((error) => {
+          console.error(
+            "세션 확인 실패:",
+            error?.response?.data?.message || error.message
+          );
           setUser(null);
           setToken(null);
-        }
-      })
-      .catch((error) => {
-        console.error(
-          "세션 확인 실패:",
-          error?.response?.data?.message || error.message
-        );
-        setUser(null);
-        setToken(null);
-      })
-      .finally(() => {
-        setLoading(false); // 로딩 완료
-      });
-  };
-
-  useEffect(() => {
+        })
+        .finally(() => {
+          setLoading(false); // 로딩 완료
+        });
+    };
     checkLoginStatus(); // 세션 상태 확인
   }, []);
 

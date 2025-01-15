@@ -60,12 +60,14 @@ export default function LoginForm({ checkLoginStatus }) {
       // axios를 사용해 로그인 데이터 전송
       const response = await axios.post("/api/login", { email, password });
       {
+        // 세션 쿠키 유지
         withCredentials: true;
-      } // 세션 쿠키 유지
+      }
       // 성공 처리
       if (response.status === 200) {
         alert("로그인 성공!");
-        checkLoginStatus();
+        // checkLoginStatus 완료 후 navigate 실행
+        await checkLoginStatus(); // 세션 상태 갱신 대기
         navigate("/"); // 홈 화면으로 리다이렉트
       }
     } catch (error) {
