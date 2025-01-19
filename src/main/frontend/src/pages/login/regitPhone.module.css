@@ -1,4 +1,5 @@
-.wrap {
+/* 페이지 전체 스타일 */
+.phoneWrap {
   display: block;
   flex-direction: column;
   height: 65vh;
@@ -23,20 +24,13 @@
   text-align: center;
 }
 
-.valid_error {
-  font-size: 1rem;
-  color: #ff4d4f;
-  margin-top: -8px;
-  text-align: center;
-}
-
 .headerP {
   font-size: 1rem;
   color: gray;
 }
 
 /* 폼 컨테이너 */
-.form {
+.phoneForm {
   width: 100%;
   max-width: 400px;
   background: #fff;
@@ -48,7 +42,7 @@
 }
 
 /* 입력 필드 스타일 */
-.input {
+.phoneInput {
   width: 100%;
   padding: 12px;
   font-size: 14px;
@@ -58,7 +52,7 @@
   transition: border-color 0.3s;
 }
 
-.input:focus {
+.phoneInput:focus {
   outline: none;
   border-color: #0078ff;
   box-shadow: 0 0 3px rgba(0, 120, 255, 0.5);
@@ -72,11 +66,7 @@
 }
 
 /* 버튼 스타일 */
-.submit {
-  margin: 0 30px;
-}
-
-.submit_button {
+.phoneButton {
   width: 100%;
   padding: 15px;
   font-size: 16px;
@@ -89,6 +79,12 @@
   transition: background-color 0.3s ease;
 }
 
-.submit_button:hover {
+.phoneButton:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.phoneButton:hover {
   background-color: #0056b3;
 }
+

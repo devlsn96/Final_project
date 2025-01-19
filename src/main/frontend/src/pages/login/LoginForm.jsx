@@ -69,7 +69,7 @@ export default function LoginForm() {
       if (response.status === 200) {
         alert("로그인 성공!");
         // checkLoginStatus 완료 후 navigate 실행
-        await checkLoginStatus(); // 세션 상태 갱신 대기
+        checkLoginStatus();
         navigate("/"); // 홈 화면으로 리다이렉트
       }
     } catch (error) {
@@ -127,7 +127,7 @@ export default function LoginForm() {
           </button>
         </form>
         <div className={styles.loginInfo}>
-          <Link to="/login/email/find-email">이메일 찾기</Link>
+          <Link to="/login/email/find-email">로그인하실 아이디를 잊어버리셨나요?</Link>
         </div>
         <br />
         <div className={styles.regitpage}>

@@ -23,5 +23,5 @@ public interface UserRepositoryImpl {
     public User findByEmail(String email);
 
     // 이름으로 조회
-    public User findByUsername(String username);
+    public String findByUsername(String username, String phone);
 }

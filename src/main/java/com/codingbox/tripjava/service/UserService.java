@@ -70,8 +70,8 @@ public class UserService {
 	}
 
 	// 이름으로 조회
-	public User findByUsername(String username) {
-		return userRepository.findByUsername(username);
+	public String findByUsername(String username, String phone) {
+		return userRepository.findByUsername(username, phone);
 	}
 
 	// 회원 수정

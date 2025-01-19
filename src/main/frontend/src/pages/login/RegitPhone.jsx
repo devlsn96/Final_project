@@ -83,19 +83,17 @@ function RegitPhone() {
             required
           />
           <span className={style.valid_text}>{error}</span>
-          <div className={style.regit}>
-            <button
-              className={style.phoneButton}
-              type="submit"
-              disabled={isButtonDisabled}
-              style={{
-                backgroundColor: isButtonDisabled ? "#ccc" : "#4169e1",
-                cursor: isButtonDisabled ? "not-allowed" : "pointer",
-              }}
-            >
-              회원 가입 완료
-            </button>
-          </div>
+          <button
+            className={style.phoneButton}
+            type="submit"
+            disabled={isButtonDisabled}
+            style={{
+              backgroundColor: isButtonDisabled ? "#ccc" : "#4169e1",
+              cursor: isButtonDisabled ? "not-allowed" : "pointer",
+            }}
+          >
+            회원 가입 완료
+          </button>
         </form>
       </div>
     </div>

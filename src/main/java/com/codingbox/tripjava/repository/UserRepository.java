@@ -68,10 +68,11 @@ public class UserRepository implements UserRepositoryImpl {
 
 	// 이름으로 조회
 	@Override
-	public User findByUsername(String username) {
+	public String findByUsername(String username, String phone) {
 		JPAQueryFactory queryFactory = new JPAQueryFactory(em);
-		return queryFactory.selectFrom(user)
-				.where(user.username.eq(username))
+		return queryFactory.select(user.email)
+				.from(user)
+				.where(user.username.eq(username).and(user.phone.eq(phone)))
 				.fetchOne();
 	}
 }

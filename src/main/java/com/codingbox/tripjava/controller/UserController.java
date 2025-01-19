@@ -218,8 +218,8 @@ public class UserController {
     public ResponseEntity<String> selectEmail(@RequestBody MemberFormDTO member) {
         try {
             // 회원가입 서비스 호출
-            User checkEmail = userService.findByUsername(member.getUsername());
-            return ResponseEntity.ok().body(checkEmail.getEmail());
+            String checkEmail = userService.findByUsername(member.getUsername(), member.getPhone());
+            return ResponseEntity.ok().body(checkEmail);
         } catch (NullPointerException e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("사용자님의 이메일을 찾을 수 없습니다.");
         } catch (Exception e) {
