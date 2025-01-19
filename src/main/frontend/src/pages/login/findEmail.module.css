@@ -1,0 +1,74 @@
+.wrap {
+  display: inline;
+  justify-content: center;
+  align-items: center;
+  height: 65vh;
+}
+
+.regit {
+  width: fit-content;
+  padding: 30px;
+  text-align: left;
+  margin: 0 auto;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  box-shadow: 1px 1px 10px rgba(143, 143, 143, 0.3);
+  margin-top: 20px;
+}
+
+.regit h1,
+.regit p {
+  text-align: center;
+}
+
+.regitForm {
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  display: block;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.regitForm input {
+  font-family: "GmarketSansMedium";
+  margin: 10px 0;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  height: 35px;
+  min-width: 250px;
+}
+
+.complete {
+  margin: 0 30px;
+}
+
+.complete_button {
+  font-family: "GmarketSansMedium";
+  background-color: #4169e1;
+  color: #fff;
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  margin-left: 130px;
+}
+
+.complete_button:hover {
+  background-color: #6a92ee;
+}
+
+/* Input + 버튼을 포함 */
+.inputWithButton {
+  display: flex;
+  align-items: center;
+}
+
+.inputWithButton button {
+  margin-left: 10px;
+}
+
+/* 유효성 메시지 */
+.valid_text {
+  font-size: 12px;
+  color: #ff4d4f;
+}

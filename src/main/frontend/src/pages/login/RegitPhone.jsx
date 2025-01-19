@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Input from "../../component/Input";
-import style from "./RegitPhone.module.css";
+import style from "./regitPhone.module.css";
 import { UserContext } from "../../UserContext";
 
 function RegitPhone() {

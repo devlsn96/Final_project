@@ -126,6 +126,9 @@ export default function LoginForm() {
             로그인
           </button>
         </form>
+        <div className={styles.loginInfo}>
+          <Link to="/login/email/find-email">이메일 찾기</Link>
+        </div>
         <br />
         <div className={styles.regitpage}>
           <div className={styles.caption}>계정이 없으신가요?</div>

@@ -87,8 +87,15 @@
   color: gray;
 }
 
-.regitpage {
+.regitpage,
+.loginInfo {
   text-align: center;
+}
+
+.loginInfo a {
+  color: gray;
+  margin: 0 10px;
+  text-decoration: none;
 }
 
 .regitpage a {

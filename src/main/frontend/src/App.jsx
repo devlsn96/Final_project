@@ -11,6 +11,7 @@ import LoginForm from "./pages/login/LoginForm.jsx";
 import RegitForm from "./pages/login/RegitForm.jsx";
 import MainLayout from "./component/main/MainLayout.jsx";
 import LogoutCallback from "./pages/login/LogoutCallback.jsx";
+import FindEmail from "./pages/login/FindEmail.jsx";
 import RegitPhone from "./pages/login/RegitPhone.jsx";
 import MyPage from "./pages/mypage/MyPage.jsx";
 import ProfileInfo from "./pages/mypage/ProfileInfo.jsx";
@@ -48,6 +49,7 @@ function App() {
           path: "/login/email",
           element: <LoginForm />,
         },
+        { path: "/login/email/find-email", element: <FindEmail /> },
         { path: "/login/email/regit", element: <RegitForm /> },
         { path: "/login/regitPhone", element: <RegitPhone /> },
         {

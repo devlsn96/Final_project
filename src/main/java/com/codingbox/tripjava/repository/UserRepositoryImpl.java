@@ -4,7 +4,7 @@ import com.codingbox.tripjava.entity.User;
 
 public interface UserRepositoryImpl {
 
-    // 회원 정보 입략
+    // 회원 정보 입력
 	public User save(User user);
 
     // 단건 조회
@@ -17,7 +17,10 @@ public interface UserRepositoryImpl {
     public void delete(User user);
 
     // 이메일 중복 체크
-    public User existByEmail (String email);
+    public Long existByEmail (String email);
+
+    // 이메일로 조회
+    public User findByEmail(String email);
 
     // 이름으로 조회
     public User findByUsername(String username);
