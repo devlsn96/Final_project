@@ -219,9 +219,11 @@ public class UserController {
         try {
             // 회원가입 서비스 호출
             String checkEmail = userService.findByUsername(member.getUsername(), member.getPhone());
-            return ResponseEntity.ok().body(checkEmail);
-        } catch (NullPointerException e) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("사용자님의 이메일을 찾을 수 없습니다.");
+            if (checkEmail.isEmpty()) {
+                return ResponseEntity.ok().body("사용자님의 이메일을 찾을 수 없습니다.");
+            } else {
+                return ResponseEntity.ok().body(checkEmail);
+            }
         } catch (Exception e) {
             return ResponseEntity.status(400).body("이메일 찾기 처리 실패: " + e.getMessage());
         }

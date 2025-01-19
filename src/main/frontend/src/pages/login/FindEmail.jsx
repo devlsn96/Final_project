@@ -60,6 +60,7 @@ export default function FindEmail() {
     } catch (error) {
     console.error("이름 입력 실패: ", error);
     if (error.response && error.response.data) {
+      alert(`${username}님의 이메일주소는 없습니다.`);
       console.log(error.response.data); // 서버에서 전달된 에러 메시지 표시
     } else {
       console.log("이메일 찾기에 실패했습니다. 다시 시도해주세요.");
@@ -72,7 +73,7 @@ return (
     <div className={style.container}>
       <h1 className={style.header}>이메일 찾기</h1>
       <p className={style.headerP}>
-        사용자 정보에 등록된 이름을 입력해 주세요.
+        사용자 정보에 등록된 이름과 전화번호를 입력해 주세요.
       </p>
       <form className={style.form} onSubmit={handleSubmit}>
         <Input
