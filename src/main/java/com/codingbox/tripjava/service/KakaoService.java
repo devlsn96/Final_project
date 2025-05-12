@@ -68,17 +68,12 @@ public class KakaoService {
             HttpEntity<String> entity = new HttpEntity<>(headers);
             
             try {
-                @SuppressWarnings("rawtypes")
                 ResponseEntity<Map> response = restTemplate.exchange(USER_INFO_URL, HttpMethod.GET, entity, Map.class);
-                @SuppressWarnings("unchecked")
                 Map<String, Object> userInfo = response.getBody();
-                @SuppressWarnings("null")
                 Long socialId = (Long) userInfo.get("id"); // 고유 사용자 ID (socialId)
 
                 // 사용자 정보 파싱
-                @SuppressWarnings("unchecked")
                 Map<String, Object> kakaoAccount = (Map<String, Object>) userInfo.get("kakao_account");
-                @SuppressWarnings("unchecked")
                 Map<String, Object> profile = (Map<String, Object>) kakaoAccount.get("profile");
                 
                 String email = (String) kakaoAccount.get("email");
