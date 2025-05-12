@@ -24,7 +24,7 @@ public class SocialLoginController {
 	
     @GetMapping("/api/auth/kakao")
     public void kakaoLoginRedirect(HttpServletResponse response) throws IOException {
-        String clientId = "ecd64c7c8624e4bdff160a229d94993a";
+        String clientId = "6505cf17e62522003f36ce1222eb7b68";
         String redirectUri = "http://localhost:9090/auth/kakao/callback";
         String kakaoAuthUrl = "https://kauth.kakao.com/oauth/authorize"
             + "?response_type=code"
