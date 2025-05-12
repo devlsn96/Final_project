@@ -5,6 +5,7 @@ import java.util.Map;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.util.LinkedMultiValueMap;
@@ -19,10 +20,9 @@ import com.codingbox.tripjava.entity.User;
 public class KakaoService {
 
     // 상수값 (카카오 디벨로퍼스에서 발급받은 값)
-    private static final String USER_KAKAO_REST_API_KEY = "6f14e0deeef1d4d349512266f3dd47fc";   // 앱키
-    private static final String USER_REDIRECT_URI = "http://localhost:9090/auth/kakao/callback"; // redirect uri 
-    private static final String TOKEN_URL = "https://kauth.kakao.com/oauth/token"; // 토큰요청
-    private static final String USER_INFO_URL = "https://kapi.kakao.com/v2/user/me";    // 사용자정보 요청
+    private static final String USER_INFO_URL = "https://kapi.kakao.com/v2/user/me";
+    private static final String USER_KAKAO_REST_API_KEY = "6505cf17e62522003f36ce1222eb7b68";
+    private static final String USER_REDIRECT_URI = "http://localhost:9090/auth/kakao/callback";
     private static final RestTemplate restTemplate = new RestTemplate();
         
     
@@ -30,9 +30,11 @@ public class KakaoService {
          * 1. 카카오 서버에서 Access Token 요청
          */
         public String getAccessToken(String code) {
+            String tokenUrl = "https://kauth.kakao.com/oauth/token";
+
             MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
             params.add("grant_type", "authorization_code");
-            params.add("client_id", USER_KAKAO_REST_API_KEY);
+            params.add("client_id", USER_KAKAO_REST_API_KEY);  // 카카오 개발자에서 발급받은 REST API Key
             params.add("redirect_uri", USER_REDIRECT_URI);
             params.add("code", code);
     
@@ -42,7 +44,9 @@ public class KakaoService {
             HttpEntity<MultiValueMap<String, String>> entity = new HttpEntity<>(params, headers);
             try {
                 // 토큰 요청
-                ResponseEntity<Map> response = restTemplate.exchange(TOKEN_URL, HttpMethod.POST, entity, Map.class);
+                @SuppressWarnings("rawtypes")
+                ResponseEntity<Map> response = restTemplate.exchange(tokenUrl, HttpMethod.POST, entity, Map.class);
+                @SuppressWarnings("unchecked")
                 Map<String, String> responseBody = response.getBody();
 
                 // null 체크 추가
@@ -65,12 +69,17 @@ public class KakaoService {
             HttpEntity<String> entity = new HttpEntity<>(headers);
             
             try {
+                @SuppressWarnings("rawtypes")
                 ResponseEntity<Map> response = restTemplate.exchange(USER_INFO_URL, HttpMethod.GET, entity, Map.class);
+                @SuppressWarnings("unchecked")
                 Map<String, Object> userInfo = response.getBody();
+                @SuppressWarnings("null")
                 Long socialId = (Long) userInfo.get("id"); // 고유 사용자 ID (socialId)
 
                 // 사용자 정보 파싱
+                @SuppressWarnings("unchecked")
                 Map<String, Object> kakaoAccount = (Map<String, Object>) userInfo.get("kakao_account");
+                @SuppressWarnings("unchecked")
                 Map<String, Object> profile = (Map<String, Object>) kakaoAccount.get("profile");
                 
                 String email = (String) kakaoAccount.get("email");
