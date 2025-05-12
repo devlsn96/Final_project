@@ -37,13 +37,12 @@ public class SocialLoginController {
     @GetMapping("/auth/kakao/callback")
     public void kakaoLoginCallback(@RequestParam("code") String code, HttpSession session,
     		HttpServletResponse response) throws IOException {
-        System.out.println(code);
         // 카카오 서버로부터 받은 인가 코드로 토큰 요청
         String token = kakaoService.getAccessToken(code);
-        System.out.println("token : " + token);
+
         // 사용자 정보 요청 및 세션 생성
         User kakaoUser = kakaoService.getUserInfo(token);
-        System.out.println("kakaoUser : " + kakaoUser);
+        
         // 사용자 정보 처리 및 DB 저장
         User savedUser = userService.processKakaoUser(kakaoUser);
         session.setAttribute(SessionConst.LOGIN_MEMBER, savedUser);

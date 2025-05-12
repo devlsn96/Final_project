@@ -43,9 +43,7 @@ public class KakaoService {
             HttpEntity<MultiValueMap<String, String>> entity = new HttpEntity<>(params, headers);
             try {
                 // 토큰 요청
-                @SuppressWarnings("rawtypes")
                 ResponseEntity<Map> response = restTemplate.exchange(tokenUrl, HttpMethod.POST, entity, Map.class);
-                @SuppressWarnings("unchecked")
                 Map<String, String> responseBody = response.getBody();
 
                 // null 체크 추가
