@@ -19,9 +19,10 @@ import com.codingbox.tripjava.entity.User;
 public class KakaoService {
 
     // 상수값 (카카오 디벨로퍼스에서 발급받은 값)
-    private static final String USER_INFO_URL = "https://kapi.kakao.com/v2/user/me";
-    private static final String USER_KAKAO_REST_API_KEY = "6f14e0deeef1d4d349512266f3dd47fc";
-    private static final String USER_REDIRECT_URI = "http://localhost:9090/auth/kakao/callback";
+    private static final String USER_KAKAO_REST_API_KEY = "6f14e0deeef1d4d349512266f3dd47fc";   // 앱키
+    private static final String USER_REDIRECT_URI = "http://localhost:9090/auth/kakao/callback"; // redirect uri 
+    private static final String TOKEN_URL = "https://kauth.kakao.com/oauth/token"; // 토큰요청
+    private static final String USER_INFO_URL = "https://kapi.kakao.com/v2/user/me";    // 사용자정보 요청
     private static final RestTemplate restTemplate = new RestTemplate();
         
     
@@ -29,11 +30,9 @@ public class KakaoService {
          * 1. 카카오 서버에서 Access Token 요청
          */
         public String getAccessToken(String code) {
-            String tokenUrl = "https://kauth.kakao.com/oauth/token";
-            
             MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
             params.add("grant_type", "authorization_code");
-            params.add("client_id", USER_KAKAO_REST_API_KEY);  // 카카오 개발자에서 발급받은 REST API Key
+            params.add("client_id", USER_KAKAO_REST_API_KEY);
             params.add("redirect_uri", USER_REDIRECT_URI);
             params.add("code", code);
     
@@ -43,7 +42,7 @@ public class KakaoService {
             HttpEntity<MultiValueMap<String, String>> entity = new HttpEntity<>(params, headers);
             try {
                 // 토큰 요청
-                ResponseEntity<Map> response = restTemplate.exchange(tokenUrl, HttpMethod.POST, entity, Map.class);
+                ResponseEntity<Map> response = restTemplate.exchange(TOKEN_URL, HttpMethod.POST, entity, Map.class);
                 Map<String, String> responseBody = response.getBody();
 
                 // null 체크 추가
