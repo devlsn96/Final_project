@@ -43,7 +43,7 @@ public class SocialLoginController {
         System.out.println("token : " + token);
         // 사용자 정보 요청 및 세션 생성
         User kakaoUser = kakaoService.getUserInfo(token);
-        System.out.println("kakaoUser : " + kakaoUser);
+        System.out.println("kakaoUser의 이름: " + kakaoUser.getUsername());
         // 사용자 정보 처리 및 DB 저장
         User savedUser = userService.processKakaoUser(kakaoUser);
         session.setAttribute(SessionConst.LOGIN_MEMBER, savedUser);
